@@ -1,0 +1,162 @@
+.hb {
+  background: #ccc;
+  height: 1px;
+}
+
+.btn {
+  border-radius: 6px;
+  color: #555;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 37px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+  user-select: none;  
+  width: 130px;
+  -webkit-appearance: none;
+}
+
+.btn.shadow {
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.btn.shadow:hover {
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+.btn-grp.btn-left {
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-top: 1px solid; 
+  border-radius: 4px 0 0 4px;
+}
+
+.btn-grp.btn-right {
+  border: 1px solid;
+  border-radius: 0 4px 4px 0;
+}
+
+.btn-grp.active {
+  background: #7e8e9e;
+  box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+.btn-grp:not(.active):hover {
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.btn.btn-grp.gray {
+  border-color: #7e8e9e #7e8e9e !important;
+}
+
+.btn.blue-solid {
+  background: #007aff;
+  border-color: #007aff #007aff !important;
+  color: #fff;
+}
+
+.btn.green-solid {
+  background: #68be79;
+  border-color: #68be79 #68be79 !important;
+  color: #fff;
+}
+
+.spinner-btn .show { display: block; }
+.spinner-btn .hide { display: none; }
+.spinner-wrapper   {
+  cursor: not-allowed;
+  height: 37px;
+}
+
+.no-select {
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -o-user-select: none; 
+}
+/*
+The MIT License (MIT)
+
+Copyright (c) 2014 Tobias Ahlin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+.spinner {
+  background: none;
+  margin: auto;
+  width: 100%;
+  height: 26px;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #fff;
+  height: 100%;
+  margin: 0 2px;
+  width: 6px;
+  display: inline-block;
+  
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  -moz-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  } 20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}

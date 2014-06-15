@@ -1,0 +1,226 @@
+/* Common Paddings and Margins
+------------------------------------------------------------------------------*/
+.pas { padding:        5px; }
+.pts { padding-left:   5px; }
+.prs { padding-right:  5px; }
+.pbs { padding-bottom: 5px; }
+.pls { padding-left:   5px; }
+
+.pam { padding:        10px; }
+.ptm { padding-top:    10px; }
+.prm { padding-right:  10px; }
+.pbm { padding-bottom: 10px; }
+.plm { padding-left:   10px; }
+
+.pal { padding:        20px; }
+.ptl { padding-top:    20px; }
+.prl { padding-right:  20px; }
+.pbl { padding-bottom: 20px; }
+.pll { padding-left:   20px; }
+
+.mas { margin:        5px; }
+.mts { margin-left:   5px; }
+.mrs { margin-right:  5px; }
+.mbs { margin-bottom: 5px; }
+.mls { margin-left:   5px; }
+
+.mam { margin:        10px; }
+.mtm { margin-top:    10px; }
+.mrm { margin-right:  10px; }
+.mbm { margin-bottom: 10px; }
+.mlm { margin-left:   10px; }
+
+.mal { margin:        20px; }
+.mtl { margin-top:    20px; }
+.mrl { margin-right:  20px; }
+.mbl { margin-bottom: 20px; }
+.mll { margin-left:   20px; }
+
+.pas-m { padding:        0.25em; }
+.pts-m { padding-left:   0.25em; }
+.prs-m { padding-right:  0.25em; }
+.pbs-m { padding-bottom: 0.25em; }
+.pls-m { padding-left:   0.25em; }
+
+.pam-m { padding:        0.5em; }
+.ptm-m { padding-top:    0.5em; }
+.prm-m { padding-right:  0.5em; }
+.pbm-m { padding-bottom: 0.5em; }
+.plm-m { padding-left:   0.5em; }
+
+.pal-m { padding:        1.0em; }
+.ptl-m { padding-top:    1.0em; }
+.prl-m { padding-right:  1.0em; }
+.pbl-m { padding-bottom: 1.0em; }
+.pll-m { padding-left:   1.0em; }
+
+.mas-m { margin:        0.25em; }
+.mts-m { margin-left:   0.25em; }
+.mrs-m { margin-right:  0.25em; }
+.mbs-m { margin-bottom: 0.25em; }
+.mls-m { margin-left:   0.25em; }
+
+.mam-m { margin:        0.5em; }
+.mtm-m { margin-top:    0.5em; }
+.mrm-m { margin-right:  0.5em; }
+.mbm-m { margin-bottom: 0.5em; }
+.mlm-m { margin-left:   0.5em; }
+
+.mal-m { margin:        1.0em; }
+.mtl-m { margin-top:    1.0em; }
+.mrl-m { margin-right:  1.0em; }
+.mbl-m { margin-bottom: 1.0em; }
+.mll-m { margin-left:   1.0em; }
+
+
+/* Common Margins and Paddings for Large Windows
+------------------------------------------------------------------------------*/
+@media screen and (min-width: 481px) {
+    .l-pas { padding:        5px; }
+    .l-pts { padding-left:   5px; }
+    .l-prs { padding-right:  5px; }
+    .l-pbs { padding-bottom: 5px; }
+    .l-pls { padding-left:   5px; }
+
+    .l-pam { padding:        10px; }
+    .l-ptm { padding-top:    10px; }
+    .l-prm { padding-right:  10px; }
+    .l-pbm { padding-bottom: 10px; }
+    .l-plm { padding-left:   10px; }
+
+    .l-pal { padding:        20px; }
+    .l-ptl { padding-top:    20px; }
+    .l-prl { padding-right:  20px; }
+    .l-pbl { padding-bottom: 20px; }
+    .l-pll { padding-left:   20px; }
+
+    .l-mas { margin:        5px; }
+    .l-mts { margin-left:   5px; }
+    .l-mrs { margin-right:  5px; }
+    .l-mbs { margin-bottom: 5px; }
+    .l-mls { margin-left:   5px; }
+
+    .l-mam { margin:        10px; }
+    .l-mtm { margin-top:    10px; }
+    .l-mrm { margin-right:  10px; }
+    .l-mbm { margin-bottom: 10px; }
+    .l-mlm { margin-left:   10px; }
+
+    .l-mal { margin:        20px; }
+    .l-mtl { margin-top:    20px; }
+    .l-mrl { margin-right:  20px; }
+    .l-mbl { margin-bottom: 20px; }
+    .l-mll { margin-left:   20px; }
+
+    .l-pas-m { padding:        0.25em; }
+    .l-pts-m { padding-left:   0.25em; }
+    .l-prs-m { padding-right:  0.25em; }
+    .l-pbs-m { padding-bottom: 0.25em; }
+    .l-pls-m { padding-left:   0.25em; }
+
+    .l-pam-m { padding:        0.5em; }
+    .l-ptm-m { padding-top:    0.5em; }
+    .l-prm-m { padding-right:  0.5em; }
+    .l-pbm-m { padding-bottom: 0.5em; }
+    .l-plm-m { padding-left:   0.5em; }
+
+    .l-pal-m { padding:        1.0em; }
+    .l-ptl-m { padding-top:    1.0em; }
+    .l-prl-m { padding-right:  1.0em; }
+    .l-pbl-m { padding-bottom: 1.0em; }
+    .l-pll-m { padding-left:   1.0em; }
+
+    .l-mas-m { margin:        0.25em; }
+    .l-mts-m { margin-left:   0.25em; }
+    .l-mrs-m { margin-right:  0.25em; }
+    .l-mbs-m { margin-bottom: 0.25em; }
+    .l-mls-m { margin-left:   0.25em; }
+
+    .l-mam-m { margin:        0.5em; }
+    .l-mtm-m { margin-top:    0.5em; }
+    .l-mrm-m { margin-right:  0.5em; }
+    .l-mbm-m { margin-bottom: 0.5em; }
+    .l-mlm-m { margin-left:   0.5em; }
+
+    .l-mal-m { margin:        1.0em; }
+    .l-mtl-m { margin-top:    1.0em; }
+    .l-mrl-m { margin-right:  1.0em; }
+    .l-mbl-m { margin-bottom: 1.0em; }
+    .l-mll-m { margin-left:   1.0em; }
+}
+
+/* Common Margins and Paddings for Small Windows
+------------------------------------------------------------------------------*/
+@media screen and (max-width: 480px) {
+    .s-pas { padding:        5px; }
+    .s-pts { padding-left:   5px; }
+    .s-prs { padding-right:  5px; }
+    .s-pbs { padding-bottom: 5px; }
+    .s-pls { padding-left:   5px; }
+
+    .s-pam { padding:        10px; }
+    .s-ptm { padding-top:    10px; }
+    .s-prm { padding-right:  10px; }
+    .s-pbm { padding-bottom: 10px; }
+    .s-plm { padding-left:   10px; }
+
+    .s-pal { padding:        20px; }
+    .s-ptl { padding-top:    20px; }
+    .s-prl { padding-right:  20px; }
+    .s-pbl { padding-bottom: 20px; }
+    .s-pll { padding-left:   20px; }
+
+    .s-mas { margin:        5px; }
+    .s-mts { margin-left:   5px; }
+    .s-mrs { margin-right:  5px; }
+    .s-mbs { margin-bottom: 5px; }
+    .s-mls { margin-left:   5px; }
+
+    .s-mam { margin:        10px; }
+    .s-mtm { margin-top:    10px; }
+    .s-mrm { margin-right:  10px; }
+    .s-mbm { margin-bottom: 10px; }
+    .s-mlm { margin-left:   10px; }
+
+    .s-mal { margin:        20px; }
+    .s-mtl { margin-top:    20px; }
+    .s-mrl { margin-right:  20px; }
+    .s-mbl { margin-bottom: 20px; }
+    .s-mll { margin-left:   20px; }
+
+    .s-pas-m { padding:        0.25em; }
+    .s-pts-m { padding-left:   0.25em; }
+    .s-prs-m { padding-right:  0.25em; }
+    .s-pbs-m { padding-bottom: 0.25em; }
+    .s-pls-m { padding-left:   0.25em; }
+
+    .s-pam-m { padding:        0.5em; }
+    .s-ptm-m { padding-top:    0.5em; }
+    .s-prm-m { padding-right:  0.5em; }
+    .s-pbm-m { padding-bottom: 0.5em; }
+    .s-plm-m { padding-left:   0.5em; }
+
+    .s-pal-m { padding:        1.0em; }
+    .s-ptl-m { padding-top:    1.0em; }
+    .s-prl-m { padding-right:  1.0em; }
+    .s-pbl-m { padding-bottom: 1.0em; }
+    .s-pll-m { padding-left:   1.0em; }
+
+    .s-mas-m { margin:        0.25em; }
+    .s-mts-m { margin-left:   0.25em; }
+    .s-mrs-m { margin-right:  0.25em; }
+    .s-mbs-m { margin-bottom: 0.25em; }
+    .s-mls-m { margin-left:   0.25em; }
+
+    .s-mam-m { margin:        0.5em; }
+    .s-mtm-m { margin-top:    0.5em; }
+    .s-mrm-m { margin-right:  0.5em; }
+    .s-mbm-m { margin-bottom: 0.5em; }
+    .s-mlm-m { margin-left:   0.5em; }
+
+    .s-mal-m { margin:        1.0em; }
+    .s-mtl-m { margin-top:    1.0em; }
+    .s-mrl-m { margin-right:  1.0em; }
+    .s-mbl-m { margin-bottom: 1.0em; }
+    .s-mll-m { margin-left:   1.0em; }
+}

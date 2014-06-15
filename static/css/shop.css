@@ -1,0 +1,187 @@
+body * {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Hammock Preview/Gallery Styling
+------------------------------------------------------------------------------*/
+.hammock-builder-section {
+  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.35);
+     -moz-box-shadow: 0 2px 10px rgba(0,0,0,.35);
+          box-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+.hammock-preview-title {
+  font-size: 26px;
+}
+
+.gallery-wrapper {
+  min-height: 320px;
+  width: 100%;
+}
+
+.gallery-main-wrapper {
+  border-bottom: 1px solid #ccc;
+  height: 302px;
+  width: 100%;
+}
+
+.gallery-main {
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.gallery-main.hammock { background-size: 100% auto; }
+.gallery-main.bag { background-size: auto 100%; }
+.gallery-main.straps { background-size: auto 100%; }
+
+.gallery-thumbnail-list-wrapper {
+  margin-top: 10px;
+}
+
+.gallery-thumbnail-wrapper {
+  cursor: pointer;
+  height: 75px;
+  padding: 0 10px;
+}
+
+.gallery-thumbnail-wrapper:hover {
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.gallery-thumbnail {
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+}
+
+.gallery-thumbnail.hammock { background-size: 100% auto; }
+.gallery-thumbnail.bag { background-size: auto 100%; }
+.gallery-thumbnail.straps { background-size: auto 100%; }
+
+/* Hammock Configuration Controls Styling
+------------------------------------------------------------------------------*/
+.hammock-builder-section {
+  border-bottom: 1px solid #ccc;
+  color: #333;
+  font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
+  min-height: 550px;
+}
+
+.color-choice {
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+}
+
+.color-choice img {
+  border-radius: 4px;
+  display: block;
+  overflow: hidden; 
+  width: 100%;
+  margin: auto;
+  max-width: 55px;
+}
+
+.color-choice.disabled img {
+  visibility: hidden;
+}
+
+.color-choice.disabled {
+  background: url('../img/disabled-background.png') no-repeat center center;
+  background-size: auto 100%;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.color-choice.active img {
+  border: 1px solid #888;
+  box-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
+
+.gear-builder-text {
+  line-height: 24px;
+}
+
+.color-choices {
+  max-height: 65px;
+}
+
+.color-choices.optional {
+  overflow: hidden;
+  -webkit-transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
+     -moz-transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
+          transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+.color-choices.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.total-hammock-price {
+  color: #616161;
+  font-size: 32px;
+}
+
+.cart-btn-wrapper {
+  padding: 25px 10px;
+  width: 100%;
+}
+
+.cart-btn {
+  background: #68be79;
+  color: #fff;
+  padding: 5px 0;
+  width: 100%;
+}
+
+/* Extras Section Styling
+------------------------------------------------------------------------------*/
+.extras-section {
+  font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
+  width: 100%;
+}
+
+.extras-section h2 { font-size: 32px; }
+
+.extras-wrapper {/* height: 100%; */width: 100%; }
+
+.extras-thumbnail {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  height: 225px;
+  width: 100%;
+}
+
+.extras-thumbnail.straps { background-image: url('../img/straps.jpg'); }
+.extras-thumbnail.neutrino { background-image: url('../img/bd-neutrino.jpg'); }
+
+.extras-desc {
+  color: #666;
+  font-size: 24px;
+  text-align: center;
+}
+
+.extras-add-to-cart-btn {
+  color: #777;
+  cursor: pointer;
+  font-size: 18px;
+  margin: auto;
+  text-align: center;
+  text-decoration: underline;
+  width: 150px;
+}
+
+.extras-add-to-cart-btn:hover {
+  color: #444;
+}

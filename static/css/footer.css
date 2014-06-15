@@ -1,0 +1,24 @@
+/* Footer Styling
+-------------------------------------------*/
+.footer-wrapper {
+  background: #fff;
+  color: #999;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding-top: 40px;
+  width: 100%;
+}
+
+.footer-line-1 {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#emailAddress {
+  cursor: pointer;
+}
+
+#emailAddress:hover {
+  text-decoration: underline;
+}

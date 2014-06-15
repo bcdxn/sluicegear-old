@@ -1,0 +1,225 @@
+extends _layout
+
+block body
+  .container
+    //- Header
+    .main-menu-wrapper
+      header.clear.main-menu.grid.center
+        h1.logo
+          a(href='/') Sluice
+        ul.pages.plm
+          //- li.active Home
+          li: a(href='/shop') Shop
+          li: a(onclick='Sluice.scrollToId("#specs", 500)' href='#specs') Specs
+          li: a(onclick='Sluice.scrollToId("#introSection", 500)' href='#productInfo') Product Info
+          li: a(onclick='Sluice.scrollToId("#socialSection", 1000)' href='#social') Social
+          li.mini-cart-wrapper
+    //- Hero Content
+    .sluice-hero-wrapper
+      #HeroWrapper
+      .banner-copy-wrapper
+        .banner-copy.grid.center
+          .row
+            .col.l12.l-txt-left.s-txt-center
+              h1 Sluice Hammocks
+          .row
+            .col.l12.l-txt-left.s-txt-center
+              h2 Create your fun
+          .row
+            .col.l12.l-txt-left.s-txt-center
+              h3 Personalized hammocks made in the USA
+          .hero-btn-group.plm.ptl.prm
+            a.hero-btn.hero-shop-now-btn.shadow.mrm(href='/shop')
+              span Shop now
+            #learnMoreBtn.hero-btn.hero-learn-more-btn
+              span Learn more
+    //- Specs Section
+    section#specs.spec-wrapper
+      .spec-summary.grid.center
+        .row
+          .col.l3.m3.s6.spec-icon-wrapper
+            img.spec-icon(src='img/spec-icons/icon-dimensions.png')
+            .spec-icon-caption 9ft x 5ft
+          .col.l3.m3.s6.spec-icon-wrapper
+            img.spec-icon(src='img/spec-icons/icon-durable.png')
+            .spec-icon-caption Holds up to 400lbs
+          .col.l3.m3.s6.spec-icon-wrapper
+            img.spec-icon(src='img/spec-icons/icon-weight.png')
+            .spec-icon-caption Weighs just 21oz
+          .col.l3.m3.s6.spec-icon-wrapper
+            img.spec-icon(src='img/spec-icons/icon-warranty.png')
+            .spec-icon-caption 2 year warranty
+        .row
+          .col.l12
+            #showAllSpecsBtn.show-all-specs-btn More specs
+        .spec-btn-spacer
+        .row
+          #fullSpecContainer.full-spec-container.hide
+            table.sluice-table
+              thead
+                tr
+                  th
+                  th(colspan='2') Standard Hammock
+                  th(colspan='2') Kid's Hammie
+              tbody
+                tr
+                  th.table-lbl Description
+                  th(colspan='2') Personal portable hammock for everyone
+                  th(colspan='2') Personal portable hammock for kids
+                tr
+                  th.table-lbl Variants
+                  th Single Color
+                  th Dual Color
+                  th Single Color
+                  th Dual Color
+                tr
+                  th.table-lbl Price
+                  th $50
+                  th $70
+                  th $45
+                  th $65
+                tr
+                  th.table-lbl Country of origin
+                  th(colspan='4') USA
+                tr
+                  th.table-lbl Weight
+                  th(colspan='2') 21oz
+                  th(colspan='2') 15oz
+                tr
+                  th.table-lbl Unfolded dimensions
+                  th(colspan='2') 9ft x 5ft
+                  th(colspan='2') 6ft x 5ft
+                tr
+                  th.table-lbl Bagged dimensions
+                  th(colspan='2') 12in x 7in
+                  th(colspan='2') 10in x 6in
+                tr
+                  th.table-lbl Max height recommendation
+                  th(colspan='2') 7ft
+                  th(colspan='2') 4ft
+                tr
+                  th.table-lbl Max weight recommendation
+                  th(colspan='2') 400lb
+                  th(colspan='2') 300lb
+                tr
+                  th.table-lbl Materials and construction
+                  th(colspan='4')
+                    ul
+                      li 100% nylon fabric laundered for softness
+                      li Breathable, abrasion resistant, colorfast, and water-resistant
+                      li Mating snap fasteners on hammock and stuff sack
+                      li Heavy duty polyester stitching
+                      li Easy disassembly for machine washing
+                tr
+                  th.table-lbl Attachments and accessories
+                  th(colspan='4')
+                    ul
+                      li 2 Black Diamond aluminum wiregate hiking carabiners included
+                      li Drawstring stuff sack with integrated snap fasteners included
+                tr
+                  th.table-lbl Care instruction
+                  th(colspan='4') Machine wash cold, hang dry
+                tr
+                  th.table-lbl Warranty
+                  th(colspan='4') 2 year manufacturer's craftsmanship warranty
+    //- Relax Section
+    section#introSection.intro-section
+      .parallax-bg-pnl-wrapper
+          #introSectionParallaxBg.parallax-bg-panel.tree-beach-pnl
+        .intro-section-copy-wrapper.grid.center
+          .row.intro-section-copy.section-copy
+            h1 Built for Relaxing
+            p
+              | Sluice hammocks can be set up in no time and are easily adjusted
+              | so you can experience comfort your way. The lightweight laundered
+              | nylon fabric is so comfortable you'll want to take a hammock with
+              | you wherever you go
+    //- Made in America Section
+    section#madeInAmericaSection.made-in-america-section.product-section
+      .grid.center
+        .row
+          .col.l5.l-right7
+            img.section-img(src='img/straps-shadow.png')
+          .col.l6.s-txt-center.l-left5
+            .section-copy.made-in-america-section-copy.center-vertical.light
+              h1 Home Grown
+              p
+                | Sluice hammocks are built by hand in Raleigh, North Carolina
+                | using domestically-sourced materials and components. Our
+                | hammocks are produced with the highest quality and ethical
+                | standards so you can relax with complete peace of mind.
+    //- Colorful/Personable Section
+    section#madeInAmericaSection.colorful-portable-section.product-section
+      .grid.center
+        .row
+          .col.l5
+            img.section-img.relaxing-kids(src='img/relaxing-kids.png')
+          .col.l6.l-right1.s-txt-center
+            .section-copy.made-in-america-section-copy.center-vertical.light
+              h1 Colorful and Portable
+              p
+                | Sluice hammocks are designed to be easy to set up. Their light
+                | weight means you can take Sluice hammocks with you to the park
+                | or put them in your pack on a hiking trip. The colorful and
+                | comfortable laundered nylon is perfect for wherever you relax.
+    //- Infographic
+    section.infographic-section
+      .grid.center
+        .row
+          .col.l8.s10.l-right2.s-right1
+            img.infographic-main-img.info-img(src='img/infographic/infographic.png')
+        #infographicTop.row.infographic-small.top
+          .col.l2.s2
+            img#infographicThread.infographic-small.info-img(src='img/infographic/infographic-thread.png')
+          .col.l2.s2.l-right8.s-right8.small-inline
+            img#infographicClip.infographic-small.info-img(src='img/infographic/infographic-clip.png')
+        #infographicBottom.row.infographic-small.bottom
+          .col.l2.s2
+            img#infographicStash.infographic-small.info-img(src='img/infographic/infographic-stash.png')
+          .col.l2.s2.l-right8.s-right8
+            img#infographicSnap.infographic-small.info-img(src='img/infographic/infographic-snap.png')
+    //- Call to Action
+    section.call-to-action-section
+      .grid.center
+          .row
+            .col.l12.l-txt-center.s-txt-center.call-to-action-txt
+              | Now that you know about us, create your fun. Personalize your
+              | hammock and start relaxing!
+          .row
+            a#callToActionBtn.col.l6.l-right3.call-to-action-btn.hero-btn.shadow(href='/shop') Create my hammock now
+    //- Social Media
+    section#socialSection.social-section
+      .social-title
+        h3
+          | Follow us on Instagram and Facebook to stay up to date on all of the
+          | latest Sluice news
+        .social-icon-wrapper
+          a.social-icon(href='http://instagram.com/sluicegear')
+            img(src='img/social-icons/instagram.png')
+          a.social-icon(href='https://www.facebook.com/pages/Sluice-Hammocks/250710088436981')
+            img(src='img/social-icons/facebook.png')
+          .social-hashtag
+            h3 #sluicing #sluicegear
+    //- Footer
+    include includes/footer
+
+  //- Shopping Cart
+  #shoppingCartContainer.shopping-cart-wrapper.hidden
+  //- Styles
+  link(rel='stylesheet', type='text/css', href='css/reset.css')
+  link(rel='stylesheet', type='text/css', href='css/bcd-grid.css')
+  link(rel='stylesheet', type='text/css', href='css/bcd-margins-paddings.css')
+  link(rel='stylesheet', type='text/css', href='css/common.css')
+  link(rel='stylesheet', type='text/css', href='css/hero-gallery.css')
+  link(rel='stylesheet', type='text/css', href='css/header.css')
+  link(rel='stylesheet', type='text/css', href='css/landing.css')
+  link(rel='stylesheet', type='text/css', href='css/footer.css')
+  link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
+
+  //- Scripts
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+  script(src='js/jquery.cookie.js')
+  script(src='js/common.js')
+  script(src='js/hero-gallery.jquery.js')
+  script(src='js/shopping-cart.js')
+  script(src='js/main.js')

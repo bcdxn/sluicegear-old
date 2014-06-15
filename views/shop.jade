@@ -1,0 +1,81 @@
+extends _layout
+
+block body
+  .container
+    //- Header
+    .main-menu-wrapper
+      header.clear.main-menu.grid.center
+        h1.logo
+          a(href='/') Sluice
+        ul.pages.plm
+          //- li: a(href='/') Home
+          li.active Shop
+          li: a(onclick='Sluice.scrollToId("#specs", 500)' href='#specs') Specs
+          li: a(onclick='Sluice.scrollToId("#introSection", 500)' href='#productInfo') Product Info
+          li: a(onclick='Sluice.scrollToId("#socialSection", 1000)' href='#social') Social
+          li.mini-cart-wrapper
+    //- Hammock Builder and Preview
+    section.hammock-builder-section
+      .grid.center
+          .row.pas
+            .col.l7.m7.mtl
+              h1.hammock-preview-title.mbl Your hammock:
+              //- Preview Gallery 
+              #shoppingGallery.gallery-wrapper.l-prl
+                .gallery-main-wrapper
+                  .gallery-main.hammock
+                .grid.gallery-thumbnail-list-wrapper
+                  .row
+                    .col.l3.m3.s3.gallery-thumbnail-wrapper
+                      .gallery-thumbnail.hammock
+                    .col.l3.m3.s3.gallery-thumbnail-wrapper
+                      .gallery-thumbnail.bag
+                    .col.l3.m3.s3.gallery-thumbnail-wrapper.straps
+                      .gallery-thumbnail.straps
+            .col.l5.m5
+              .builder-body.grid.pas
+    //- Extras and Accessories
+    section.extras-section
+      .grid.center.extras-grid
+          .row.pas
+            .col.l12
+              h2.ptl Extras:
+          .row.pas.extras-row
+            .col.l4.m6.s10.s-right1.extras-col
+              .extras-wrapper
+                .extras-thumbnail.straps
+                .extras-desc Extra set of straps
+                #addStrapsToCartBtn.extras-add-to-cart-btn.ptm
+                  | Add to cart $20.00
+            .col.l4.m6.s10.s-right1.extras-col
+              .extras-wrapper
+                .extras-thumbnail.neutrino
+                .extras-desc Black Diamond Neutrino
+                #addCarabinerToCartBtn.extras-add-to-cart-btn.ptm
+                  | Add to cart $5.50
+    //- Footer
+    include includes/footer
+
+  //- Shopping Cart
+  #shoppingCartContainer.shopping-cart-wrapper.hidden
+
+  //- Styles
+  link(rel='stylesheet', type='text/css', href='css/reset.css')
+  link(rel='stylesheet', type='text/css', href='css/common.css')
+  link(rel='stylesheet', type='text/css', href='css/bcd-grid.css')
+  link(rel='stylesheet', type='text/css', href='css/bcd-margins-paddings.css')
+  link(rel='stylesheet', type='text/css', href='css/bcd-toggler.css')
+  link(rel='stylesheet', type='text/css', href='css/header.css')
+  link(rel='stylesheet', type='text/css', href='css/shop.css')
+  link(rel='stylesheet', type='text/css', href='css/footer.css')
+  link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
+
+  //- Scripts
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+  script(src='js/jquery.cookie.js')
+  script(src='js/common.js')
+  script(src='js/bcd-toggler.jquery.js')
+  script(src='js/shop-gallery.js')
+  script(src='js/hammock-builder.js')
+  script(src='js/shopping-cart.js')
+  script(src='js/shop.js')
