@@ -1,0 +1,13 @@
+extends _layout
+
+block body
+  div(class='notice grid center ptl')
+    div(class='row')
+      h1(id='title' class='col l12 l-txt-center m-txt-center s-txt-center') uh oh!
+    div(class='row')
+      p= msg
+    div(class='row txt-center')
+      a(class='btn blue-solid notice-btn shadow' href='/')= btnTxt
+  include includes/footer
+  // Styles
+  link(href='css/notice.css', rel='stylesheet', type='text/css')

@@ -1,0 +1,23 @@
+.notice .row h1 {
+  color: #333;
+  font-family: 'Engagement', Helvetica, Arial, sans-serif;
+  font-size: 80px;
+  text-align: center;
+}
+
+.notice .row {
+  text-align: center;
+}
+
+.notice .row p {
+  color:; #333;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.notice-btn {
+  text-align: center;
+  width: 100px;
+}

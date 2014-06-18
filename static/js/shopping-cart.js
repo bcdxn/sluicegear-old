@@ -540,13 +540,22 @@
     };
 
     Sluice.ShoppingCart.prototype._onCheckoutBtnClick = function () {
-      var self = this;
+      var self = this,
+          encodedJson,
+          itemsArray = [];
 
       this.$container.on('click', '.shopping-cart-inner .grid .row #checkoutBtn', function (evt) {
+        evt.stopPropagation();
         if (self.numItems > 0 && $('.btn-wrapper', $(this)).hasClass('show')) {
           $('.btn-wrapper', $(this)).removeClass('show').addClass('hide');
           $('.spinner-wrapper', $(this)).removeClass('hide').addClass('show');
-          self.$container.trigger('checkout');
+          
+          for (key in self.items) {
+            itemsArray.push(self.items[key]);
+          }
+
+          encodedJson = encodeURIComponent(JSON.stringify(itemsArray));
+          window.location.href = '/order?paymentMethod=paypal&cart=' + encodedJson;
         }
       });
     };

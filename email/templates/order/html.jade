@@ -1,0 +1,11 @@
+div(class='email-wrapper')
+  div(class='order-id')= 'Order: ' + orderId
+  div(class='payment-id')= 'PayPal payment id: ' + paymentId
+  div(class='payment-date')= 'Payment date: ' + createdTime
+  div(class='payment-state')= 'PayPal payment state: ' + state
+  div(class='payer-info')
+    pre= JSON.stringify(payer, null, '\t')
+  div(class='transaction')
+    pre= JSON.stringify(transaction, null, '\t')
+  div(class='cart')
+    pre= JSON.stringify(cart, null, '\t')

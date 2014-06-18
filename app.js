@@ -40,10 +40,10 @@ app.set('port', process.env.PORT || CONFIG.PORT)
 ------------------------------------------------------------------------------*/
 app.get('/', routes.landing);
 app.get('/shop', routes.shop);
-// app.get('/order', routes.order);
-// app.get('/orderApprove', routes.orderApprove);
-// app.get('/orderExecute', routes.orderExecute);
-// app.get('/thankyou', routes.thankyou);
+app.get('/order', routes.order);
+app.get('/orderApprove', routes.orderApprove);
+app.get('/orderExecute', routes.orderExecute);
+app.get('/thankyou', routes.thankyou);
 // app.get('*', routes.fourOhFour);
 
 /* Start Server

@@ -8,11 +8,11 @@ block body
         h1.logo
           a(href='/') Sluice
         ul.pages.plm
-          //- li: a(href='/') Home
+          li: a(href='/') Home
           li.active Shop
-          li: a(onclick='Sluice.scrollToId("#specs", 500)' href='#specs') Specs
-          li: a(onclick='Sluice.scrollToId("#introSection", 500)' href='#productInfo') Product Info
-          li: a(onclick='Sluice.scrollToId("#socialSection", 1000)' href='#social') Social
+          li: a(onclick='Sluice.scrollToId("/", 500)' href='#specs') Specs
+          li: a(onclick='Sluice.scrollToId("/#introSection", 500)' href='#productInfo') Product Info
+          li: a(onclick='Sluice.scrollToId("/#socialSection", 1000)' href='#social') Social
           li.mini-cart-wrapper
     //- Hammock Builder and Preview
     section.hammock-builder-section
@@ -60,14 +60,8 @@ block body
   #shoppingCartContainer.shopping-cart-wrapper.hidden
 
   //- Styles
-  link(rel='stylesheet', type='text/css', href='css/reset.css')
-  link(rel='stylesheet', type='text/css', href='css/common.css')
-  link(rel='stylesheet', type='text/css', href='css/bcd-grid.css')
-  link(rel='stylesheet', type='text/css', href='css/bcd-margins-paddings.css')
-  link(rel='stylesheet', type='text/css', href='css/bcd-toggler.css')
   link(rel='stylesheet', type='text/css', href='css/header.css')
   link(rel='stylesheet', type='text/css', href='css/shop.css')
-  link(rel='stylesheet', type='text/css', href='css/footer.css')
   link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
 
   //- Scripts

@@ -1,0 +1,71 @@
+extends _layout
+
+block body
+  div(class='order-wrapper')
+    div(class='grid order center')
+      div(class='row')
+        div(class='col l12 txt-center')
+          a(id='homeLink', class='letter-head-logo' href='/') Sluice
+      div(class='row')
+        div(class='col l12 txt-center')
+          h1(class='title')= title
+      div(class='row confirmation-grid-header order-table')
+        div(class='col l3 m3') Item
+        div(class='col l4 m4') Details
+        div(class='col l2 m2') Quantity
+        div(class='col l3 m3') Unit Price
+      - for (var i = 0; i < cart.length; i++) {
+        div(class='row order-table order-item')
+          div(class='col l3 m3 item-type')= cart[i].item.type
+          div(class='col l4 m4 item-desc')= cart[i].item.desc
+          div(class='col l2 m2')= cart[i].quantity
+          div(class='col l3 m3')= '$' + (Math.floor(cart[i].item.price) / 100).toFixed(2)
+      - }
+      div(class='row order-shipping order-table')
+        div(class='col l2 m2 right7 shipping-lbl order-table-lbl') Shipping: 
+        div(class='col l3 m3 right7 shipping-val order-table-val')= '$' + shipping
+      div(class='row order-total order-table')
+        div(class='col l2 m2 right7 total-lbl order-table-lbl') Total:
+        div(class='col l3 m3 right7 total-val order-table-val')= '$' + total
+      - if (confirmation) {
+        div(class='row')
+          div(id='checkoutBtn', class='spinner-btn col span3 float-right')
+            div(class='btn-wrapper show')
+              input(type='button', class='paypal-btn', value='Complete Order',
+                onclick='Sluice.confirm("' + approval_url + '")')
+            div(class='spinner-wrapper hide')
+              div(class='spinner')
+                div(class="rect1")
+                div(class="rect2")
+                div(class="rect3")
+                div(class="rect4")
+                div(class="rect5")
+          input(id="cancelBtn", class='col l3 m3 bcd-link-btn gray cancel-order float-right',
+            onclick='Sluice.redirect("' + cancel_url + '")',
+            type='button', value='Cancel order')
+      - } else {
+        div(class='row')
+          input(class='col l2 m2 bcd-btn green2-solid txt-center right9',
+            type='button', onclick='Sluice.redirectNoAsk("/")', value='Go Home')
+      - }
+
+  - if (!confirmation) {
+    div(class='email-notice-wrapper')
+      div(class='grid center')
+        div(class='row')
+          div(class='col l12 m12 txt-center')
+            | We'll email you as soon as we process your order!
+  - }
+
+  include ./includes/footer
+  // Styles
+  link(rel='stylesheet', type='text/css', href='css/order-approve.css')
+  // Scripts
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+  script(src='js/lib/jquery/plugins/jquery.cookie.js')
+  script(src='js/sluice-utils.js')
+  - if (confirmation) {
+    <script> !function () { window.onbeforeunload = function (e) { return 'This will cancel your checkout!'; } }() </script> 
+  - } else {
+    <script> !function ($) { $.removeCookie('sluice_cart_cookie'); }(jQuery) </script>
+  - }

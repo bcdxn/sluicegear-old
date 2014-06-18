@@ -69,6 +69,7 @@
 
 .hero-gallery-ctrls-btn {
   background: #fff;
+  border: 1px solid #fff;
   border-radius: 4px;
   cursor: pointer;
   float: left;
@@ -79,9 +80,9 @@
 
 .hero-gallery-ctrls-btn.active {
   background: none;
-  border: 1px solid #fff;
-  border-radius: 6px;
-  height: 10px;
-  margin: 6px;
-  width: 10px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 14px;
+  margin: 5px;
+  width: 14px;
 }

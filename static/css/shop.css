@@ -137,9 +137,10 @@ body * {
   width: 100%;
 }
 
-.cart-btn {
+.btn.cart-btn {
   background: #68be79;
   color: #fff;
+  font-size: 18px;
   padding: 5px 0;
   width: 100%;
 }
