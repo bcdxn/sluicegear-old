@@ -12,11 +12,10 @@ module.exports = function () {
   config.PORT          = 1337;
   config.CACHE_ONE_DAY = 86400000;
 
-  config.EMAIL_TEMPLATE_DIR      = '/templates';
-  config.EMAIL_PROTOCOL          = 'SMTP';
-  config.EMAIL_SERVICE           = 'Gmail';
-  config.NOTIFICATION_EMAIL_FROM = 'orders.sluicegear@gmail.com';
-  config.NOTIFICATION_EMAIL_TO   = 'bcdixon@outlook.com';
+  config.EMAIL_TEMPLATE_DIR           = '/templates';
+  config.EMAIL_PROTOCOL               = 'SMTP';
+  config.EMAIL_SERVICE                = 'Gmail';
+  config.NOTIFICATION_EMAIL_FROM_ADDR = 'orders.sluicegear@gmail.com';
 
   return config;
 };

@@ -1,4 +1,4 @@
-!function ($, Sluice, __shop_gallery_dependency__, undefined) {
+;!function ($, Sluice, __shop_gallery_dependency__, undefined) {
 
   /* Model
   ----------------------------------------------------------------------------*/

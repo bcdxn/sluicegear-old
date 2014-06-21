@@ -27,7 +27,7 @@ exports.order = function (req, res) {
       validation = utils.isValidShoppingCart(req.query.cart),
       cart,
       paypalPayment,
-      SHIPPING = 0,
+      shipping,
       tax = 0,
       subtotal,
       total,
@@ -61,14 +61,15 @@ exports.order = function (req, res) {
     };
 
     subtotal = utils.calculateSubtotal(cart);
-    total = subtotal + SHIPPING;
+    shipping = utils.calculateShipping(subtotal);
+    total = subtotal + shipping;
 
     // Add pricing to request body
     paypalPayment.transactions[0].amount.total            = utils.priceToString(total);
     paypalPayment.transactions[0].amount.currency         = 'USD';
     paypalPayment.transactions[0].amount.details.subtotal = utils.priceToString(subtotal);
     paypalPayment.transactions[0].amount.details.tax      = utils.priceToString(tax);
-    paypalPayment.transactions[0].amount.details.shipping = utils.priceToString(SHIPPING);
+    paypalPayment.transactions[0].amount.details.shipping = utils.priceToString(shipping);
 
     // Add approved callback url to the request body
     paypalPayment.redirect_urls.return_url = process.env.SLUICE_HOST_ROOT + 
@@ -78,7 +79,8 @@ exports.order = function (req, res) {
     paypalPayment.redirect_urls.cancel_url = process.env.SLUICE_HOST_ROOT + 
       port + '/';
     // Add description to the request body
-    paypalPayment.transactions[0].description = 'SluiceGear.com Order';
+    paypalPayment.transactions[0].description = 'SluiceGear.com Order -- $' +
+      paypalPayment.transactions[0].amount.total;
     // Create payment with paypal API
     paypal.payment.create(paypalPayment, {}, function (err, resp) {
       var paymentId,
@@ -118,8 +120,9 @@ exports.orderApprove = function (req, res) {
   var payer      = {},
       orderId,
       paymentId,
-      shipping   = 0,
-      total      = 0,
+      subtotal,
+      shipping,
+      total,
       validation = utils.isValidShoppingCart(req.session.cart),
       cart;
 
@@ -154,13 +157,16 @@ exports.orderApprove = function (req, res) {
     return;
   }
 
-  total = utils.priceToString(utils.calculateSubtotal(cart) + shipping);
+  subtotal = utils.calculateSubtotal(cart);
+  shipping = utils.calculateShipping(subtotal);
+  total = subtotal + shipping;
 
   // Render the confirmation page
   res.render('order-summary', {
     'cart': cart,
-    'shipping': 0,
-    'total': total,
+    'subtotal': utils.priceToString(subtotal),
+    'shipping': utils.priceToString(shipping),
+    'total': utils.priceToString(total),
     'title': 'Confirm your order',
     'confirmation': true,
     'approval_url': '/orderExecute?PayerID=' + payer.payer_id + '&orderId=' + orderId,
@@ -173,9 +179,7 @@ exports.orderExecute = function (req, res) {
       orderId,
       paymentId,
       validation = utils.isValidShoppingCart(req.session.cart),
-      cart,
-      shipping = 0,
-      total;
+      cart;
 
   // Check that given payer id is valid
   if (utils.isString(req.query.PayerID) &&
@@ -206,8 +210,6 @@ exports.orderExecute = function (req, res) {
     invalidOrder(res);
     return;
   }
-
-  total = utils.priceToString(utils.calculateSubtotal(cart) + shipping);
 
   // Finalize Payment with paypal API
   paypal.payment.execute(paymentId, payer, {}, function (err, resp) {
@@ -240,7 +242,8 @@ exports.thankyou = function (req, res) {
       paymentId,
       validation = utils.isValidShoppingCart(req.session.cart),
       cart,
-      shipping = 0,
+      subtotal,
+      shipping,
       total;
 
   // Check that given payer id is valid
@@ -273,12 +276,15 @@ exports.thankyou = function (req, res) {
     return;
   }
 
-  total = utils.priceToString(utils.calculateSubtotal(cart) + shipping);
+  subtotal = utils.calculateSubtotal(cart);
+  shipping = utils.calculateShipping(subtotal);
+  total = subtotal + shipping;
 
   res.render('order-summary', {
     'cart': cart,
-    'shipping': 0,
-    'total': total,
+    'subtotal': utils.priceToString(subtotal),
+    'shipping': utils.priceToString(shipping),
+    'total': utils.priceToString(total),
     'title': 'Order successful. Thank you!',
     'confirmation': false,
     'approval_url': '',

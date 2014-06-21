@@ -1,4 +1,4 @@
-!function ($, undefined) {
+;!function ($, undefined) {
     var Template = [
         '<div class="bcd-toggler-wrapper {{SIZE}} ">',
             '<div class="bcd-toggler ',

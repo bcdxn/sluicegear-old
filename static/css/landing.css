@@ -1,9 +1,3 @@
-body * {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 /* Hero Banner and Header Wrapper
 ------------------------------------------------------------------------------*/
 .sluice-hero-wrapper {
@@ -176,6 +170,13 @@ body * {
 .spec-btn-spacer { height: 10px; width: 100%; }
 
 /*---- Spec Table Styling ----*/
+.specs-header {
+  color: #333;
+  font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  text-align: center;
+}
+
 .full-spec-container {
   background: #fff;
   overflow: hidden;
@@ -224,12 +225,15 @@ body * {
 
 /* Introduction Section Styling
 ------------------------------------------------------------------------------*/
-.intro-section {
+.parallax-section {
   border-bottom: 1px solid #ccc;
+  
   min-height: 450px;
   position: relative;
   width: 100%;
 }
+
+.parallax-section.brdr-top { border-top: 1px solid #ccc; }
 
 .parallax-bg-pnl-wrapper {
   height: 100%;
@@ -243,22 +247,38 @@ body * {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  left: -30%;
   position: relative;
   width: 130%;
 }
+
+.parallax-bg-panel.start-left { left: -30%; }
+.parallax-bg-panel.start-right { right: 0; }
 
 .tree-beach-pnl {
   background-image: url('../img/hero-tree-beach-adj.jpg');
   background-position: center center;
 }
 
-.intro-section-copy-wrapper {
+.fabric-pnl {
+  background-image: url('../img/fabric-parallax-bg.jpg');
+  background-position: right center;
+}
+
+.parallax-section-copy-wrapper {
   position: relative;
   z-index: 10;
 }
 
-.intro-section-copy { float: right; max-width: 400px; padding: 75px 40px 0 0; }
+.parallax-section-copy-wrapper:after {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.parallax-section-copy { max-width: 400px; padding: 75px 40px 0 0; }
+.parallax-section-copy.right { float: right; }
 
 .section-copy h1 {
   color: #557aff;
@@ -275,29 +295,32 @@ body * {
   padding-bottom: 15px;
 }
 
-.section-copy.light p { color: #666; }
+@media screen and (min-width: 781px) {
+  .section-copy.l-light p { color: #fff; }
+}
 
 @media screen and (max-width: 940px) {
-  .intro-section { min-height: 375px; }
-  .intro-section-copy { padding: 50px 10px; }
+  .parallax-section { min-height: 375px; }
+  .parallax-section-copy { padding: 50px 10px; }
   .section-copy h1 { font-size: 40px; }
 }
 
 @media screen and (max-width: 780px) {
-  .intro-section {
+  .parallax-section {
     min-height: 500px;
   }
   .parallax-bg-panel { border-bottom: 1px solid #bbb; height: 350px; }
-  .intro-section-copy {
+  .parallax-section-copy {
     float: none;
     max-width: 100%;
     padding: 375px 10px 10px 10px;
+    text-align: center;
   }
   .section-copy p { font-size: 16px; }
 }
 
 @media screen and (max-width: 480px) {
-  .intro-section-copy { text-align: center; }
+  .parallax-section-copy { text-align: center; }
 }
 
 .product-section {
@@ -306,7 +329,7 @@ body * {
   width: 100%;
 }
 
-.made-in-america-section .grid { border-bottom: 1px solid #ccc; }
+.brdr-top { border-bottom: 1px solid #ccc; }
 
 .made-in-america-section-copy {
   padding: 50px 0 0 10px;
@@ -350,7 +373,6 @@ body * {
 }
 
 .infographic-section .grid {
-  border-top: 1px solid #ccc;
   padding: 20px 0;
   position: relative;
 }

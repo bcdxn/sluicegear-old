@@ -4,13 +4,22 @@ html(lang='en')
     meta(charaset='utf8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
     title Sluice Gear | Made in the USA
+    link(rel='stylesheet', type='text/css', href='bin/layout.min.css')
   body
     block body
-    link(rel="stylesheet", type="text/css", href='css/reset.css')
-    link(rel='stylesheet', type='text/css', href='css/common.css')
-    link(rel='stylesheet', type='text/css', href='css/bcd-grid.css')
-    link(rel='stylesheet', type='text/css', href='css/bcd-margins-paddings.css')
-    link(rel='stylesheet', type='text/css', href='css/bcd-toggler.css')
-    link(rel='stylesheet', type='text/css', href='css/footer.css')
+    //- Development individual styles
+
+    //- cat css/reset.css css/common.css \
+    //- css/bcd-grid.css css/bcd-margins-paddings.css \
+    //- css/bcd-toggler.css css/header.css css/footer.css | \
+    //- cleancss -o bin/layout.min.css
+
+    //- link(rel="stylesheet", type="text/css", href='css/reset.css')
+    //- link(rel='stylesheet', type='text/css', href='css/common.css')
+    //- link(rel='stylesheet', type='text/css', href='css/bcd-grid.css')
+    //- link(rel='stylesheet', type='text/css', href='css/bcd-margins-paddings.css')
+    //- link(rel='stylesheet', type='text/css', href='css/bcd-toggler.css')
+    //- link(rel='stylesheet', type='text/css', href='css/header.css')
+    //- link(rel='stylesheet', type='text/css', href='css/footer.css')
     link(href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans+Condensed:300|Open+Sans:300',
       rel="stylesheet", type="text/css")

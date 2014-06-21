@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-!function ($, undefined) {
+;!function ($, undefined) {
   var Template = {
     wrapper: [
     '<div class="hero-gallery-wrapper">',

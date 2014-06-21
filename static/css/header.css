@@ -38,3 +38,9 @@ ul.pages li.active { color: #777; }
 ul.pages li:last-child { margin-right: 0; }
 ul.pages li:hover { color: #777; }
 ul.pages li:first-child { padding-left: 0; }
+
+@media screen and (max-width: 740px) {
+  ul.pages li:not(.shop-link):not(.mini-cart-wrapper) {
+    display: none;
+  }
+}

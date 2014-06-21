@@ -18,7 +18,7 @@ exports.sendOrderEmail = function (locals) {
     transport = nodemailer.createTransport(CONFIG.EMAIL_PROTOCOL, {
       service: CONFIG.EMAIL_SERVICE,
       auth: {
-        user: CONFIG.NOTIFICATION_EMAIL_FROM,
+        user: CONFIG.NOTIFICATION_EMAIL_FROM_ADDR,
         pass: process.env.SLUICE_NOTIFICATION_EMAIL_FROM_PWD
       }
     });
@@ -28,9 +28,8 @@ exports.sendOrderEmail = function (locals) {
         console.log('ERROR: order notification not sent -- '  + tempCompileErr);
       } else {
         transport.sendMail({
-          // 'from': '<news.sluice@gmail.com>',
-          'from': '<' + CONFIG.NOTIFICATION_EMAIL_FROM + '>',
-          'to': CONFIG.NOTIFICATION_EMAIL_TO,
+          'from': '<' + CONFIG.NOTIFICATION_EMAIL_FROM_ADDR + '>',
+          'to': process.env.SLUICE_NOTIFICATION_EMAIL_TO_ADDR,
           'subject': 'New Order -- ' + locals.createdTime,
           'html': html
         }, function(err, responseStatus) {

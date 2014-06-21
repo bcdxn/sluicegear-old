@@ -1,4 +1,4 @@
-!function ($, __shopping_cart_dependency__, undefined) {
+;!function ($, __shopping_cart_dependency__, undefined) {
   var ShoppingCart = __shopping_cart_dependency__,
       cart = new ShoppingCart('#shoppingCartContainer');
 
@@ -35,7 +35,8 @@
         startLeftPercent = -30,
         leftPercent      = startLeftPercent,
         percentDelta     = Math.abs(startLeftPercent),
-        scrollDelta      = 600;
+        scrollDelta      = 600,
+        $section         = $('#introSectionParallaxBg');
 
     if (sectionOffset > windowHeight) {
       start = sectionOffset - windowHeight;
@@ -50,7 +51,35 @@
       leftPercent = 0;
     }
 
-    $('#introSectionParallaxBg').css('left', leftPercent + '%');
+    $section.css('left', leftPercent + '%');
+  });
+
+  // Color Section Parallax
+  ;$(window).on('scroll', function (evt) {
+    var windowHeight      = $(this).height(),
+        sectionOffset     = $('#portableSection').offset().top,
+        start             = 0,
+        startRightPercent = 0,
+        endRightPercent   = 30,
+        rightPercent      = startRightPercent,
+        percentDelta      = Math.abs(endRightPercent - startRightPercent),
+        scrollDelta       = 600,
+        $section          = $('#portableSectionParallaxBg');
+
+    if (sectionOffset > windowHeight) {
+      start = sectionOffset - windowHeight;
+    }
+
+    if ($(this).scrollTop() > start) {
+      rightPercent = startRightPercent +
+        (percentDelta * (($(this).scrollTop() - start) / scrollDelta));
+    }
+
+    if (rightPercent > 30) {
+      rightPercent = 30;
+    }
+
+    $section.css('right', rightPercent + '%');
   });
 
   // Init Infographic

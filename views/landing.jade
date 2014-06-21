@@ -1,6 +1,10 @@
 extends _layout
 
 block body
+  //- Styles
+  link(rel='stylesheet', type='text/css', href='css/hero-gallery.css')
+  link(rel='stylesheet', type='text/css', href='css/landing.css')
+  link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
   .container
     //- Header
     .main-menu-wrapper
@@ -8,8 +12,7 @@ block body
         h1.logo
           a(href='/') Sluice
         ul.pages.plm
-          //- li.active Home
-          li: a(href='/shop') Shop
+          li.shop-link: a(href='/shop') Shop
           li: a(onclick='Sluice.scrollToId("#specs", 500)' href='#specs') Specs
           li: a(onclick='Sluice.scrollToId("#introSection", 500)' href='#productInfo') Product Info
           li: a(onclick='Sluice.scrollToId("#socialSection", 1000)' href='#social') Social
@@ -55,6 +58,7 @@ block body
         .spec-btn-spacer
         .row
           #fullSpecContainer.full-spec-container.hide
+            h2.specs-header.pbl Hammock Specs
             table.sluice-table
               thead
                 tr
@@ -122,12 +126,51 @@ block body
                 tr
                   th.table-lbl Warranty
                   th(colspan='4') 2 year manufacturer's craftsmanship warranty
-    //- Relax Section
-    section#introSection.intro-section
+            h2.specs-header.pbl Straps Specs
+            table(class='sluice-table')
+              tbody
+                tr
+                  th.table-lbl Description
+                  th(colspan='4') Pair of two straps to setup hammock with no knots
+                tr
+                  th.table-lbl Price
+                  th(colspan='4') $20
+                tr
+                  th.table-lbl Country of origin
+                  th(colspan='4') USA
+                tr
+                  th.table-lbl Weight
+                  th(colspan='4') 4oz (each) / 8oz (pair)
+                tr
+                  th.table-lbl Length
+                  th(colspan='4') 9.5ft each
+                tr
+                  th.table-lbl # of attachment points
+                  th(colspan='4') 6 attachment points per strap
+                tr
+                  th.table-lbl Materials and construction
+                    th(colspan='4')
+                      ul
+                        li 3/4in wide no-stretch tubular polyester webbing
+                        li Continuous spine with heavy duty triple stitched attachment points
+                        li Abrasion resistant and tree bark friendly
+                        li Mating snap fasteners on straps and stuff sack
+                  tr
+                    th.table-lbl Accessories
+                    th(colspan='4')
+                      p Drawstring stuff sack with integrated snap fasteners included
+                  tr
+                      th.table-lbl Max weight recommendation
+                      th(colspan='4') 250lbs each strap
+                  tr
+                    th.table-lbl Warranty
+                    th(colspan='4') 2 year manufacturer's craftsmanship warranty
+    //- Intro Section
+    section#introSection.parallax-section.brdr-top
       .parallax-bg-pnl-wrapper
-          #introSectionParallaxBg.parallax-bg-panel.tree-beach-pnl
-        .intro-section-copy-wrapper.grid.center
-          .row.intro-section-copy.section-copy
+          #introSectionParallaxBg.parallax-bg-panel.start-right.tree-beach-pnl
+        .parallax-section-copy-wrapper.grid.center
+          .row.parallax-section-copy.section-copy.right
             h1 Built for Relaxing
             p
               | Sluice hammocks can be set up in no time and are easily adjusted
@@ -138,9 +181,9 @@ block body
     section#madeInAmericaSection.made-in-america-section.product-section
       .grid.center
         .row
-          .col.l5.l-right7
+          .col.l5.m5.l-right7.m-right7
             img.section-img(src='img/straps-shadow.png')
-          .col.l6.s-txt-center.l-left5
+          .col.l6.m6.s-txt-center.l-left5.m-left5
             .section-copy.made-in-america-section-copy.center-vertical.light
               h1 Home Grown
               p
@@ -148,36 +191,34 @@ block body
                 | domestically-sourced materials and components. Our hammocks
                 | are produced with the highest quality and ethical standards,
                 | so you can relax with complete peace of mind.
-    //- Colorful/Personable Section
-    section#madeInAmericaSection.colorful-portable-section.product-section
-      .grid.center
-        .row
-          .col.l5
-            img.section-img.relaxing-kids(src='img/relaxing-kids.png')
-          .col.l6.l-right1.s-txt-center
-            .section-copy.made-in-america-section-copy.center-vertical.light
-              h1 Colorful and Portable
-              p
-                | Sluice hammocks are designed for easy setup. Their light
-                | weight means you can take Sluice hammocks with you to the park
-                | to read, or put them in your pack on a hiking trip. The
-                | colorful and comfortable laundered nylon is perfect for
-                | wherever you relax.
+    //- Portable Section
+    section#portableSection.parallax-section.brdr-top
+      .parallax-bg-pnl-wrapper
+          #portableSectionParallaxBg.parallax-bg-panel.start-right.fabric-pnl
+        .parallax-section-copy-wrapper.grid.center
+          .row.parallax-section-copy.section-copy.right.l-light
+            h1 Portable and Durable
+            p
+              | Sluice hammocks are designed for easy setup. Their light
+              | weight means you can take Sluice hammocks with you to the park
+              | to read, or put them in your pack on a hiking trip. The
+              | colorful and comfortable laundered nylon is perfect for
+              | wherever you relax.
     //- Infographic
     section.infographic-section
       .grid.center
         .row
-          .col.l8.s10.l-right2.s-right1
+          .col.l8.m8.s10.l-right2.m-right2.s-right1
             img.infographic-main-img.info-img(src='img/infographic/infographic.png')
         #infographicTop.row.infographic-small.top
-          .col.l2.s2
+          .col.l2.m2.s2
             img#infographicThread.infographic-small.info-img(src='img/infographic/infographic-thread.png')
-          .col.l2.s2.l-right8.s-right8.small-inline
+          .col.l2.m2.s2.l-right8.m-right8.s-right8.small-inline
             img#infographicClip.infographic-small.info-img(src='img/infographic/infographic-clip.png')
         #infographicBottom.row.infographic-small.bottom
-          .col.l2.s2
+          .col.l2.m2.s2
             img#infographicStash.infographic-small.info-img(src='img/infographic/infographic-stash.png')
-          .col.l2.s2.l-right8.s-right8
+          .col.l2.m2.s2.l-right8.m-right8.s-right8
             img#infographicSnap.infographic-small.info-img(src='img/infographic/infographic-snap.png')
     //- Call to Action
     section.call-to-action-section
@@ -206,16 +247,15 @@ block body
 
   //- Shopping Cart
   #shoppingCartContainer.shopping-cart-wrapper.hidden
-  //- Styles
-  link(rel='stylesheet', type='text/css', href='css/hero-gallery.css')
-  link(rel='stylesheet', type='text/css', href='css/header.css')
-  link(rel='stylesheet', type='text/css', href='css/landing.css')
-  link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
 
   //- Scripts
   script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-  script(src='js/jquery.cookie.js')
-  script(src='js/common.js')
-  script(src='js/hero-gallery.jquery.js')
-  script(src='js/shopping-cart.js')
-  script(src='js/main.js')
+  script(src='bin/landing.min.js')
+  
+  //- Devevelopment individual scripts
+
+  //- script(src='js/jquery.cookie.js')
+  //- script(src='js/common.js')
+  //- script(src='js/hero-gallery.jquery.js')
+  //- script(src='js/shopping-cart.js')
+  //- script(src='js/main.js')

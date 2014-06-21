@@ -1,3 +1,9 @@
+body * {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .hb {
   background: #ccc;
   height: 1px;
@@ -69,6 +75,18 @@
   color: #fff;
 }
 
+.btn.light-gray {
+  color: #888;
+}
+
+.btn.link-btn {
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+/* Spinner Button Styling
+------------------------------------------------------------------------------*/
 .spinner-btn .show { display: block; }
 .spinner-btn .hide { display: none; }
 .spinner-wrapper   {

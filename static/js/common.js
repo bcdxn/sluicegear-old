@@ -15,4 +15,35 @@
 
     return false;
   };
+
+  /**
+   * Redirect the browser to the given end point.
+   *
+   * @param {String} url The url to redirect to
+   */
+  Sluice.redirect = function (url) {
+    document.location.href = url;
+  };
+
+  /**
+   * Redirect the browser to the given end point. Remove the 'are you sure'
+   * dialog if it exists.
+   *
+   * @param {String} url The url to redirect to
+   */
+  Sluice.redirectNoAsk = function (url) {
+    window.onbeforeunload = function (e) { return null; };
+    document.location.href = url;
+  };
+
+  /**
+   * Redirect with no ask after clicking on the confirm button.
+   *
+   * @param {String} url The url to redirect to
+   */
+  Sluice.confirm = function (url) {
+    $('.btn-wrapper').removeClass('show').addClass('hide');
+    $('.spinner-wrapper').removeClass('hide').addClass('show');
+    Sluice.redirectNoAsk(url);
+  }
 }(window.Sluice = window.Sluice || {}, $)

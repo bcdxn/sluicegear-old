@@ -4,12 +4,15 @@ var HAMMOCK_TYPE             = 'Hammock',
     HAMMIE_MODEL             = 'Hammie',
     STANDARD_TYPE            = 'Standard Hammock',
     HAMMIE_TYPE              = 'Hammie Hammock',
-    EXTRA_STRAPS_TYPE        = 'Extra Straps',
+    EXTRA_STRAPS_TYPE        = 'Straps',
+    CARABINER_TYPE           = 'Carabiner',
     STANDARD_PRICE           = 5000,
     HAMMIE_PRICE             = 4000,
     ACCENT_PRICE             = 2000,
     STRAPS_PRICE             = 2000,
-    STAND_ALONE_STRAPS_PRICE = 2500;
+    CARABINER_PRICE          = 550,
+    MIN_FOR_FREE_SHIPPING    = 4000,
+    SHIPPING_PRICE           = 600;
 
 
 /**
@@ -84,8 +87,11 @@ exports.isValidShoppingCart = function (str) {
         break;
       case EXTRA_STRAPS_TYPE:
         break;
+      case CARABINER_TYPE:
+        break;
       default:
         ret.isValid = false;
+        console.log(cart[i].item.type)
         ret.msg = 'Cart -- Invalid structure -- config -- invalid type';
         return ret;
     }
@@ -100,39 +106,55 @@ exports.isValidShoppingCart = function (str) {
  * Get the subtotal price of the items in the cart.
  *
  * @param  {Object} cart     A properly formed cart
- * @return {String}          The amount in dollars in cents as a string
+ * @return {Number}          The subtotal price formatted as a whole number
  */
 exports.calculateSubtotal = function (cart) {
-  var total = 0,
-      subTotal,
+  var subtotal = 0,
+      itemPrice,
       i;
 
   for (i = 0; i < cart.length; i++) {
     switch (cart[i].item.type) {
       case HAMMOCK_TYPE:
+        console.log('MODEL: ' + cart[i].item.config.model);
         if (cart[i].item.config.model === STANDARD_MODEL) {
-          subTotal = STANDARD_PRICE;
+          itemPrice = STANDARD_PRICE;
         } else if (cart[i].item.config.model === HAMMIE_MODEL) {
-          subTotal = STANDARD_PRICE;
+          itemPrice = HAMMIE_PRICE;
         }
         if (cart[i].item.config.accentColor !== null) {
-          subTotal += ACCENT_PRICE;
+          itemPrice += ACCENT_PRICE;
         }
         if (cart[i].item.config.straps === true) {
-          subTotal += STRAPS_PRICE;
+          itemPrice += STRAPS_PRICE;
         }
-        total += Math.floor(subTotal * cart[i].quantity);
+        subtotal += (itemPrice * cart[i].quantity);
         break;
       case EXTRA_STRAPS_TYPE:
-        subTotal = STAND_ALONE_STRAPS_PRICE;
-        total += Math.floor(subTotal * cart[i].quantity);
+        subtotal += (STRAPS_PRICE * cart[i].quantity);
         break;
+      case CARABINER_TYPE:
+        subtotal += (CARABINER_PRICE * cart[i].quantity);
       default:
         break;
     }
   }
 
-  return total;
+  return subtotal;
+};
+
+/**
+ * Get the cost of shipping based on the subtotal.
+ *
+ * @param  {Number} subtotal The cart subtotal
+ * @return {Number}          The price of shipping
+ */
+exports.calculateShipping = function (subtotal) {
+  if (subtotal >= MIN_FOR_FREE_SHIPPING) {
+    return 0;
+  } else {
+    return SHIPPING_PRICE;
+  }
 };
 
 /**

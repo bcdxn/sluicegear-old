@@ -68,13 +68,31 @@
     .grid .row .col.l-txt-center { text-align: center; }
     .grid .row .col.l-txt-left   { text-align: left; }
     .grid .row .col.l-txt-right  { text-align: right; }
+
+    .grid .row .col.l-float-right { float: right; }
+    .grid .row .col.l-float-left  { float: left; }
+    .grid .row .col.l-float-none  { float: none; }
 }
 
 @media screen and (max-width: 650px) {
-    .grid .row .col:not(.s1):not(.s2):not(.s3):not(.s4):not(.s5):not(.s6):not(.s7):not(.s8):not(.s9):not(.s10):not(.s11):not(.s12):not(.s20p):not(.s40p):not(.s60p):not(.s80p),
-    .grid .row .col:not(.m1):not(.m2):not(.m3):not(.m4):not(.m5):not(.m6):not(.m7):not(.m8):not(.m9):not(.m10):not(.m11):not(.m12):not(.m20p):not(.m40p):not(.m60p):not(.m80p) { width: 100%; }
+    /*.grid .row .col:not(.s1):not(.s2):not(.s3):not(.s4):not(.s5):not(.s6):not(.s7):not(.s8):not(.s9):not(.s10):not(.s11):not(.s12):not(.s20p):not(.s40p):not(.s60p):not(.s80p),
+    .grid .row .col:not(.m1):not(.m2):not(.m3):not(.m4):not(.m5):not(.m6):not(.m7):not(.m8):not(.m9):not(.m10):not(.m11):not(.m12):not(.m20p):not(.m40p):not(.m60p):not(.m80p) { width: 100%; }*/
 
     /* Large Grid Styles */
+    .grid .row .col.l1  { width: 100.00%; }
+    .grid .row .col.l2  { width: 100.00%; }
+    .grid .row .col.l3  { width: 100.00%; }
+    .grid .row .col.l4  { width: 100.00%; }
+    .grid .row .col.l5  { width: 100.00%; }
+    .grid .row .col.l6  { width: 100.00%; }
+    .grid .row .col.l7  { width: 100.00%; }
+    .grid .row .col.l8  { width: 100.00%; }
+    .grid .row .col.l9  { width: 100.00%; }
+    .grid .row .col.l10 { width: 100.00%; }
+    .grid .row .col.l11 { width: 100.00%; }
+    .grid .row .col.l12 { width: 100.00%; }
+    
+    /* Medium Grid Styles */
     .grid .row .col.m1  { width: 8.3333%; }
     .grid .row .col.m2  { width: 16.666%; }
     .grid .row .col.m3  { width: 25.000%; }
@@ -122,6 +140,10 @@
     .grid .row .col.m-txt-center { text-align: center; }
     .grid .row .col.m-txt-left   { text-align: left; }
     .grid .row .col.m-txt-right  { text-align: right; }
+
+    .grid .row .col.m-float-right { float: right; }
+    .grid .row .col.m-float-left  { float: left; }
+    .grid .row .col.m-float-none  { float: none; }
 }
 
 /* Large and Small Grid */
@@ -145,6 +167,58 @@
     .grid .row .col.s40p { width: 40.0%; }
     .grid .row .col.s60p { width: 60.0%; }
     .grid .row .col.s80p { width: 80.0%; }
+
+    .grid .row .col.l-right1  { position: relative; left: 0%; }
+    .grid .row .col.l-right2  { position: relative; left: 0%; }
+    .grid .row .col.l-right3  { position: relative; left: 0%; }
+    .grid .row .col.l-right4  { position: relative; left: 0%; }
+    .grid .row .col.l-right5  { position: relative; left: 0%; }
+    .grid .row .col.l-right6  { position: relative; left: 0%; }
+    .grid .row .col.l-right7  { position: relative; left: 0%; }
+    .grid .row .col.l-right8  { position: relative; left: 0%; }
+    .grid .row .col.l-right9  { position: relative; left: 0%; }
+    .grid .row .col.l-right10 { position: relative; left: 0%; }
+    .grid .row .col.l-right11 { position: relative; left: 0%; }
+    .grid .row .col.l-right12 { position: relative; left: 0%; }
+    
+    .grid .row .col.l-left1  { position: relative; right: 0%; }
+    .grid .row .col.l-left2  { position: relative; right: 0%; }
+    .grid .row .col.l-left3  { position: relative; right: 0%; }
+    .grid .row .col.l-left4  { position: relative; right: 0%; }
+    .grid .row .col.l-left5  { position: relative; right: 0%; }
+    .grid .row .col.l-left6  { position: relative; right: 0%; }
+    .grid .row .col.l-left7  { position: relative; right: 0%; }
+    .grid .row .col.l-left8  { position: relative; right: 0%; }
+    .grid .row .col.l-left9  { position: relative; right: 0%; }
+    .grid .row .col.l-left10 { position: relative; right: 0%; }
+    .grid .row .col.l-left11 { position: relative; right: 0%; }
+    .grid .row .col.l-left12 { position: relative; right: 0%; }
+
+    .grid .row .col.m-right1  { position: relative; left: 0%; }
+    .grid .row .col.m-right2  { position: relative; left: 0%; }
+    .grid .row .col.m-right3  { position: relative; left: 0%; }
+    .grid .row .col.m-right4  { position: relative; left: 0%; }
+    .grid .row .col.m-right5  { position: relative; left: 0%; }
+    .grid .row .col.m-right6  { position: relative; left: 0%; }
+    .grid .row .col.m-right7  { position: relative; left: 0%; }
+    .grid .row .col.m-right8  { position: relative; left: 0%; }
+    .grid .row .col.m-right9  { position: relative; left: 0%; }
+    .grid .row .col.m-right10 { position: relative; left: 0%; }
+    .grid .row .col.m-right11 { position: relative; left: 0%; }
+    .grid .row .col.m-right12 { position: relative; left: 0%; }
+    
+    .grid .row .col.m-left1  { position: relative; right: 0%; }
+    .grid .row .col.m-left2  { position: relative; right: 0%; }
+    .grid .row .col.m-left3  { position: relative; right: 0%; }
+    .grid .row .col.m-left4  { position: relative; right: 0%; }
+    .grid .row .col.m-left5  { position: relative; right: 0%; }
+    .grid .row .col.m-left6  { position: relative; right: 0%; }
+    .grid .row .col.m-left7  { position: relative; right: 0%; }
+    .grid .row .col.m-left8  { position: relative; right: 0%; }
+    .grid .row .col.m-left9  { position: relative; right: 0%; }
+    .grid .row .col.m-left10 { position: relative; right: 0%; }
+    .grid .row .col.m-left11 { position: relative; right: 0%; }
+    .grid .row .col.m-left12 { position: relative; right: 0%; }
 
     .grid .row .col.s-right1  { position: relative; left: 8.3333%; }
     .grid .row .col.s-right2  { position: relative; left: 16.666%; }
@@ -175,6 +249,10 @@
     .grid .row .col.s-txt-center { text-align: center; }
     .grid .row .col.s-txt-left   { text-align: left; }
     .grid .row .col.s-txt-right  { text-align: right; }
+
+    .grid .row .col.s-float-right { float: right; }
+    .grid .row .col.s-float-left  { float: left; }
+    .grid .row .col.s-float-none  { float: none; }
 }
 
 /* For visual inspection of grid

@@ -1,4 +1,4 @@
-!function ($, __builder_dependency__,
+;!function ($, __builder_dependency__,
     __shop_gallery_dependency__,
     __shopping_cart_dependency__,
     undefined) {

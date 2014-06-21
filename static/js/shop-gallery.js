@@ -1,4 +1,4 @@
-!function ($, undefined) {
+;!function ($, undefined) {
   Sluice.ShopGallery = function (id) {
     var self = this;
 
@@ -70,8 +70,15 @@
    * @param {String} src The path to the image to be displayed
    */
   Sluice.ShopGallery.prototype.setBagThumbnailSrc = function (src) {
-    $('.gallery-thumbnail.bag').css('background-image',
-      "url('" + src + "')");
+    src = "url('" + src + "')"
+
+    if (src !== $('.gallery-thumbnail.bag').css('background-image')) {
+      $('.gallery-thumbnail.bag').css('background-image', src);
+
+      if (this.imgIndex === 1) {
+        this.setMainGalleryImg(1);
+      }
+    }
   };
 
   /**
@@ -100,5 +107,9 @@
    */
   Sluice.ShopGallery.prototype.hideStrapsThumbnail = function () {
     $('.gallery-thumbnail-wrapper.straps').css('display', 'none');
+
+    if (this.imgIndex === 2) {
+      this.setMainGalleryImg(0);
+    }
   };
 }(jQuery, window.Sluice = window.Sluice || {})

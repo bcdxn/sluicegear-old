@@ -1,5 +1,5 @@
-!function (Sluice, $, undefined) {
-  var CART_ITEM_LIMIT       = 99,
+;!function (Sluice, $, undefined) {
+  var CART_ITEM_LIMIT       = 10,
       BACKSPACE_KEY         = 8,
       DELETE_KEY            = 46,
       MIN_FOR_FREE_SHIPPING = 4000,
@@ -59,7 +59,7 @@
   };
 
   Sluice.ShoppingCart.prototype.getShippingPrice = function () {
-    if (this.getSubtotalPrice() > MIN_FOR_FREE_SHIPPING) {
+    if (this.getSubtotalPrice() >= MIN_FOR_FREE_SHIPPING) {
       return 0;
     } else {
       return SHIPPING_PRICE;
@@ -294,19 +294,19 @@
     '<div class="row cart-row mtl">',
       '<div class="col l6 m6 s6 btn btn-grp btn-left blue-solid keep-shopping-btn">Keep shopping</div>',
       '<div id="checkoutBtn" class="col spinner-btn l6 m6 s6 btn btn-grp btn-right green-solid  {{EMPTY_CLASS}}">',
-                '<div class="btn-wrapper show">',
-                  'Checkout with PayPal',
-                '</div>',
-                '<div class="spinner-wrapper hide">',
-                  '<div class="spinner">',
-                    '<div class="rect1"></div>',
-                    '<div class="rect2"></div>',
-                    '<div class="rect3"></div>',
-                    '<div class="rect4"></div>',
-                    '<div class="rect5"></div>',
-                  '</div>',
-                '</div>',
-              '</div>',
+        '<div class="btn-wrapper show">',
+          'Checkout with PayPal',
+        '</div>',
+        '<div class="spinner-wrapper hide">',
+          '<div class="spinner">',
+            '<div class="rect1"></div>',
+            '<div class="rect2"></div>',
+            '<div class="rect3"></div>',
+            '<div class="rect4"></div>',
+            '<div class="rect5"></div>',
+          '</div>',
+        '</div>',
+      '</div>',
     '</div>'].join('');
 
   Template.TOTALS = [
@@ -433,6 +433,7 @@
       markup = markup.replace('{{CART_INNER}}', innerHtml);
 
       this.$container.html(markup);
+      this.setCartWidth();
       this.$headerComponent.html(headerMarkup.replace('{{TOTAL_ITEM_COUNT}}', this.numItems));
     };
 
@@ -442,9 +443,18 @@
     };
 
     Sluice.ShoppingCart.prototype.expand = function () {
-      console.log('expand')
       this.$container.removeClass('hidden');
       $('.container').addClass('expanded-shopping-cart');
+    };
+
+    Sluice.ShoppingCart.prototype.setCartWidth = function () {
+      var width = $(window).width();
+
+      if (width > 480) {
+        width = 480;
+      }
+
+      $('.shopping-cart-inner').css('width', width + 'px');
     };
 
     Sluice.ShoppingCart.prototype._listen = function () {
@@ -456,6 +466,7 @@
       this._onCartClickStopPropagation();
       this._onCartHeaderClick();
       this._onCheckoutBtnClick();
+      this._onWindowResize();
     };
 
     Sluice.ShoppingCart.prototype._onKeepShoppingClick = function () {
@@ -545,6 +556,7 @@
           itemsArray = [];
 
       this.$container.on('click', '.shopping-cart-inner .grid .row #checkoutBtn', function (evt) {
+        $(document).add('*').off(); // Remove all event listeners
         evt.stopPropagation();
         if (self.numItems > 0 && $('.btn-wrapper', $(this)).hasClass('show')) {
           $('.btn-wrapper', $(this)).removeClass('show').addClass('hide');
@@ -557,6 +569,14 @@
           encodedJson = encodeURIComponent(JSON.stringify(itemsArray));
           window.location.href = '/order?paymentMethod=paypal&cart=' + encodedJson;
         }
+      });
+    };
+
+    Sluice.ShoppingCart.prototype._onWindowResize = function () {
+      var self = this;
+
+      $(window).on('resize', function () {
+        self.setCartWidth();
       });
     };
 
