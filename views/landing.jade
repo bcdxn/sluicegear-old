@@ -209,7 +209,9 @@ block body
       .grid.center
         .row
           .col.l8.m8.s10.l-right2.m-right2.s-right1
-            img.infographic-main-img.info-img(src='img/infographic/infographic.png')
+            - var imgSrc = 'infographic-' + Math.floor(Math.random() * (21)) + '.png'
+            img.infographic-main-img.info-img(src='img/infographic/' + imgSrc)
+            //- img.infographic-main-img.info-img(src='img/infographic/infographic.png')
         #infographicTop.row.infographic-small.top
           .col.l2.m2.s2
             img#infographicThread.infographic-small.info-img(src='img/infographic/infographic-thread.png')
@@ -225,8 +227,7 @@ block body
       .grid.center
           .row
             .col.l12.l-txt-center.s-txt-center.call-to-action-txt
-              | Now that you know about us, create your fun. Personalize your
-              | hammock and start relaxing!
+              | Now that you know about us, personalize your hammock and start relaxing!
           .row
             a#callToActionBtn.col.l6.l-right3.call-to-action-btn.hero-btn.shadow(href='/shop') Create my hammock now
     //- Social Media
@@ -238,10 +239,10 @@ block body
         .social-icon-wrapper
           a.social-icon(href='http://instagram.com/sluicegear')
             img(src='img/social-icons/instagram.png')
-          a.social-icon(href='https://www.facebook.com/pages/Sluice-Hammocks/250710088436981')
+          a.social-icon(href='https://www.facebook.com/SluiceHammocks')
             img(src='img/social-icons/facebook.png')
           .social-hashtag
-            h3 #sluicing #sluicegear
+            h3 #sluicing @sluicegear
     //- Footer
     include includes/footer
 
@@ -250,12 +251,12 @@ block body
 
   //- Scripts
   script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-  script(src='bin/landing.min.js')
+  //- script(src='bin/landing.min.js')
   
   //- Devevelopment individual scripts
 
-  //- script(src='js/jquery.cookie.js')
-  //- script(src='js/common.js')
-  //- script(src='js/hero-gallery.jquery.js')
-  //- script(src='js/shopping-cart.js')
-  //- script(src='js/main.js')
+  script(src='js/jquery.cookie.js')
+  script(src='js/common.js')
+  script(src='js/hero-gallery.jquery.js')
+  script(src='js/shopping-cart.js')
+  script(src='js/main.js')

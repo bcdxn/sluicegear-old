@@ -198,8 +198,8 @@
       '</div>',
     '</div>',
     '<div class="row pls model-selection prs">',
-      '<div class="col l6 m6 s6 btn gray btn-grp btn-left active model-btn standard">Standard</div>',
-      '<div class="col l6 m6 s6 btn gray btn-grp btn-right model-btn hammie">Kid\'s Hammie</div>',
+      '<div class="col l6 m6 s6 btn gray btn-grp btn-left inline-small active model-btn standard">Standard</div>',
+      '<div class="col l6 m6 s6 btn gray btn-grp btn-right inline-small model-btn hammie">Kid\'s Hammie</div>',
     '</div>'].join('');
 
   Template.HORIZONTAL_BREAK = [

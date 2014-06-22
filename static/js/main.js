@@ -3,6 +3,11 @@
       cart = new ShoppingCart('#shoppingCartContainer');
 
 
+  
+  setHeroGalleryHeight
+  $(window).on('resize', function () {
+    setHeroGalleryHeight();
+  })
 
   // Hero Gallery Init
   $('#HeroWrapper').herogallery({
@@ -127,5 +132,13 @@
     var rect = el.getBoundingClientRect();
 
     return (rect.top - window.innerHeight + offset) < 0;
+  }
+
+  function setHeroGalleryHeight() {
+    var galleryHeight = $(window).height() - 60;
+    if (galleryHeight < 550) {
+      galleryHeight = 550;
+    }
+    $('.sluice-hero-wrapper').css('height', galleryHeight + 'px');
   }
 }(jQuery, Sluice.ShoppingCart)

@@ -15,8 +15,12 @@ block body
         .col.l2.m2 Quantity
         .col.l3.m3 Unit Price
       - for (var i = 0; i < cart.length; i++) {
+        - var typeStr = '';
+        - if (cart[i].item.config.model !== undefined && cart[i].item.config.model !== null) {
+        -   typeStr = cart[i].item.config.model + ' ';
+        - }
         .row.order-table.order-item.pam
-          .col.l3.m3.item-type= cart[i].item.type
+          .col.l3.m3.item-type= typeStr + cart[i].item.type
           .col.l4.m4.item-desc= cart[i].item.config.desc
           .col.l2.m2= cart[i].quantity
           .col.l3.m3= '$' + (Math.floor(cart[i].item.config.price) / 100).toFixed(2)
@@ -52,7 +56,7 @@ block body
       .grid.center
         .row.pal
           .col.l12.m12.l-txt-center
-            | We'll email you as soon as we process your order!
+            | We'll email you as soon as we ship your order!
   - }
 
   include ./includes/footer

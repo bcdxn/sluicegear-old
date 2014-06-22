@@ -63,6 +63,17 @@ body * {
   border-color: #7e8e9e #7e8e9e !important;
 }
 
+@media screen and (max-width: 450px) {
+  .col.btn.btn-grp:not(.inline-small) { width: 100% !important; }
+  .col.btn.btn-grp.btn-left:not(.inline-small)  {
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  .col.btn.btn-grp.btn-right:not(.inline-small)  {
+    border-radius: 4px;
+  }
+}
+
 .btn.blue-solid {
   background: #007aff;
   border-color: #007aff #007aff !important;
