@@ -65,6 +65,36 @@
   min-height: 550px;
 }
 
+.row.info-msg-container {
+  overflow: hidden;
+  -webkit-transition: max-height 0.5s ease-in-out, opacity 0.5s ease, padding 0.5s ease;
+     -moz-transition: max-height 0.5s ease-in-out, opacity 0.5s ease, padding 0.5s ease;
+          transition: max-height 0.5s ease-in-out, opacity 0.5s ease, padding 0.5s ease;
+}
+
+.row.info-msg-container.hide {
+  max-height: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.row.info-msg-container.show {
+  max-height: 150px;
+  opacity: 1.0;
+}
+
+.info-msg {
+  background: #d9edf7;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  color: #245269;
+  font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  padding: 8px;
+  text-align: center;
+}
+
 .color-choice {
   border-radius: 4px;
   cursor: pointer;

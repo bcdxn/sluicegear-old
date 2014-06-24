@@ -1,10 +1,10 @@
-;!function ($, __shopping_cart_dependency__, undefined) {
+;!function ($, Sluice, __shopping_cart_dependency__, undefined) {
   var ShoppingCart = __shopping_cart_dependency__,
       cart = new ShoppingCart('#shoppingCartContainer');
 
 
   
-  setHeroGalleryHeight
+  setHeroGalleryHeight();
   $(window).on('resize', function () {
     setHeroGalleryHeight();
   })
@@ -16,7 +16,7 @@
   });
 
   $('#learnMoreBtn').on('click', function () {
-    Sluice.scrollToId('#specs', 500);
+    Sluice.scrollToId('#introSection', 500);
   });
 
   // Toggle Full Specs Init
@@ -43,24 +43,29 @@
         scrollDelta      = 600,
         $section         = $('#introSectionParallaxBg');
 
-    if (sectionOffset > windowHeight) {
-      start = sectionOffset - windowHeight;
-    }
+    if (Sluice.isUserMobile()) {
+      $section.css('left', '0');
+      $section.css('background-position', 'center left');
+    } else {
+      if (sectionOffset > windowHeight) {
+        start = sectionOffset - windowHeight;
+      }
 
-    if ($(this).scrollTop() > start) {
-      leftPercent = startLeftPercent +
-        (percentDelta * (($(this).scrollTop() - start) / scrollDelta));
-    }
+      if ($(this).scrollTop() > start) {
+        leftPercent = startLeftPercent +
+          (percentDelta * (($(this).scrollTop() - start) / scrollDelta));
+      }
 
-    if (leftPercent > 0) {
-      leftPercent = 0;
-    }
+      if (leftPercent > 0) {
+        leftPercent = 0;
+      }
 
-    $section.css('left', leftPercent + '%');
+      $section.css('left', leftPercent + '%');
+    }
   });
 
   // Color Section Parallax
-  ;$(window).on('scroll', function (evt) {
+  $(window).on('scroll', function (evt) {
     var windowHeight      = $(this).height(),
         sectionOffset     = $('#portableSection').offset().top,
         start             = 0,
@@ -71,20 +76,25 @@
         scrollDelta       = 600,
         $section          = $('#portableSectionParallaxBg');
 
-    if (sectionOffset > windowHeight) {
-      start = sectionOffset - windowHeight;
-    }
+    if (Sluice.isUserMobile()) {
+      $section.css('left', '0');
+      $section.css('background-position', 'center left');
+    } else {
+      if (sectionOffset > windowHeight) {
+        start = sectionOffset - windowHeight;
+      }
 
-    if ($(this).scrollTop() > start) {
-      rightPercent = startRightPercent +
-        (percentDelta * (($(this).scrollTop() - start) / scrollDelta));
-    }
+      if ($(this).scrollTop() > start) {
+        rightPercent = startRightPercent +
+          (percentDelta * (($(this).scrollTop() - start) / scrollDelta));
+      }
 
-    if (rightPercent > 30) {
-      rightPercent = 30;
-    }
+      if (rightPercent > 30) {
+        rightPercent = 30;
+      }
 
-    $section.css('right', rightPercent + '%');
+      $section.css('right', rightPercent + '%');
+    }
   });
 
   // Init Infographic
@@ -141,4 +151,4 @@
     }
     $('.sluice-hero-wrapper').css('height', galleryHeight + 'px');
   }
-}(jQuery, Sluice.ShoppingCart)
+}(jQuery, window.Sluice = window.Sluice || {}, Sluice.ShoppingCart)

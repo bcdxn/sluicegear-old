@@ -83,16 +83,7 @@
 
 .hero-btn.hero-learn-more-btn {
   border: 2px solid #fff;
-  border: 2px solid rgba(255, 255, 255, 0.8);
   color: #fff;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.hero-btn.hero-learn-more-btn:hover {
-  border: 2px solid #fff;
-  border: 2px solid rgba(255, 255, 255, 1);
-  color: #fff;
-  color: rgba(255, 255, 255, 1.0);
 }
 
 .hero-btn.shadow {
@@ -180,6 +171,7 @@
 .full-spec-container {
   background: #fff;
   overflow: hidden;
+  overflow-x: auto;
   -webkit-transition: max-height 0.75s ease;
      -moz-transition: max-height 0.75s ease;
           transition: max-height 0.75s ease;

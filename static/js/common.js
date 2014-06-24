@@ -46,4 +46,13 @@
     $('.spinner-wrapper').removeClass('hide').addClass('show');
     Sluice.redirectNoAsk(url);
   }
+
+  /**
+   * Check if the user agent is a variant of iOS.
+   *
+   * @return {Boolean} True if the user agen is iOS; else false
+   */
+  Sluice.isUserMobile = function () {
+    return /(iPad|iPhone|iPod)/ig.test(navigator.userAgent) || $(window).width < 481;
+  }
 }(window.Sluice = window.Sluice || {}, $)

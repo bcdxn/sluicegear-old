@@ -65,14 +65,20 @@ block body
 
   //- Scripts
   script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-  //- script(src='bin/shop.min.js')
-  
-  //-  Development individual scripts
+  script(src='bin/shop.min.js')
 
-  script(src='js/jquery.cookie.js')
-  script(src='js/common.js')
-  script(src='js/bcd-toggler.jquery.js')
-  script(src='js/shop-gallery.js')
-  script(src='js/hammock-builder.js')
-  script(src='js/shopping-cart.js')
-  script(src='js/shop.js')
+  //-  Development individual scripts
+  
+  //- cat js/jquery.cookie.js js/common.js \
+  //- js/bcd-toggler.jquery.js js/shop-gallery.js \
+  //- js/hammock-builder.js js/shopping-cart.js \
+  //- js/shop.js | \
+  //- minify -js > bin/shop.min.js
+
+  //- script(src='js/jquery.cookie.js')
+  //- script(src='js/common.js')
+  //- script(src='js/bcd-toggler.jquery.js')
+  //- script(src='js/shop-gallery.js')
+  //- script(src='js/hammock-builder.js')
+  //- script(src='js/shopping-cart.js')
+  //- script(src='js/shop.js')

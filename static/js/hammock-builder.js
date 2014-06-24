@@ -200,6 +200,13 @@
     '<div class="row pls model-selection prs">',
       '<div class="col l6 m6 s6 btn gray btn-grp btn-left inline-small active model-btn standard">Standard</div>',
       '<div class="col l6 m6 s6 btn gray btn-grp btn-right inline-small model-btn hammie">Kid\'s Hammie</div>',
+    '</div>',
+    '<div id="infoMsg" class="row info-msg-container minimized hide pls prs">',
+      '<div class="col l12 mtl">',
+        '<div class="info-msg">',
+          'The hammie is a smaller version of the Standard Hammock meant for kids!',
+        '</div>',
+      '</div>',
     '</div>'].join('');
 
   Template.HORIZONTAL_BREAK = [
@@ -314,8 +321,10 @@
 
     if (this.model === MODEL_STANDARD) {
       $('.btn-grp.standard').addClass('active');
+      $('.info-msg-container').removeClass('show').addClass('hide');
     } else {
       $('.btn-grp.hammie').addClass('active');
+      $('.info-msg-container').removeClass('hide').addClass('show');
     }
   };
 

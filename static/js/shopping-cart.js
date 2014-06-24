@@ -357,7 +357,9 @@
       '</div>',
       '<div class="col l5 m5 s5">',
         '<div class="cart-item-quantity">QTY ',
-          '<input type="text" class="qty-input" value="{{ITEM_QTY}}" maxlength="2" data-item-key="{{ITEM_KEY}}" />',
+          '<span class="qty-val">{{ITEM_QTY}}</span>',
+          '<input type="button" class="update-btn plus mlm" value="+" data-item-key="{{ITEM_KEY}}" />',
+          '<input type="button" class="update-btn minus mlm" value="-" data-item-key="{{ITEM_KEY}}" />',
         '</div>',
         '<div class="cart-item-title ptm">{{MODEL}}</div>',
         '<div class="cart-item-price pbm">',
@@ -460,7 +462,8 @@
     Sluice.ShoppingCart.prototype._listen = function () {
       this._onKeepShoppingClick();
       this._onRemoveBtnClick();
-      this._onQuantityKeyUp();
+      this._onPlusBtnClick();
+      this._onMinusBtnClick();
       this._onQuantityLoseFocus();
       this._onCartBlur();
       this._onCartClickStopPropagation();
@@ -485,32 +488,40 @@
       });
     };
 
-    Sluice.ShoppingCart.prototype._onQuantityKeyUp = function () {
-      var self = this,
+    Sluice.ShoppingCart.prototype._onPlusBtnClick = function () {
+       var self = this,
           key;
 
-      this.$container.on('keyup', '.shopping-cart-inner .grid .row .col .cart-item-quantity .qty-input', function (evt) {
+      this.$container.on('click', '.shopping-cart-inner .grid .row .col .cart-item-quantity .plus', function (evt) {
         var qty;
         
         key = $(this).attr('data-item-key');
-
-        if ((evt.keyCode !== BACKSPACE_KEY && evt.keyCode !== DELETE_KEY) ||
-            $(this).val().trim().length > 0) {
-          try {
-            qty = parseInt($(this).val().trim());
-            if (isNaN(qty) || qty > CART_ITEM_LIMIT) {
-              self._render();
-            } else {
-              self.updateQuantityByKey(key, qty);
-            }
-          } catch (e) {
-            self._render();
-          }
+        if (self.items[key] !== undefined && self.items[key] !== null &&
+            self.items[key].quantity < 10) {
+          self.items[key].quantity += 1;
+          self.numItems += 1;
+          self._render();
         }
+      });
+    };
 
-        $('.qty-input[data-item-key="' + key + '"]').focus();
-        $('.qty-input[data-item-key="' + key + '"]')
-          .val($('.qty-input[data-item-key="' + key + '"]').val());
+    Sluice.ShoppingCart.prototype._onMinusBtnClick = function () {
+       var self = this,
+          key;
+
+      this.$container.on('click', '.shopping-cart-inner .grid .row .col .cart-item-quantity .minus', function (evt) {
+        var qty;
+        
+        key = $(this).attr('data-item-key');
+        if (self.items[key] !== undefined && self.items[key] !== null) {
+          if (self.items[key].quantity > 1) {
+            self.items[key].quantity -= 1;
+            self.numItems -= 1;
+          } else if (self.items[key].quantity === 1) {
+            self.removeItemByKey(key);
+          }
+          self._render();
+        }
       });
     };
 
@@ -556,9 +567,9 @@
           itemsArray = [];
 
       this.$container.on('click', '.shopping-cart-inner .grid .row #checkoutBtn', function (evt) {
-        $(document).add('*').off(); // Remove all event listeners
         evt.stopPropagation();
         if (self.numItems > 0 && $('.btn-wrapper', $(this)).hasClass('show')) {
+          $(document).add('*').off(); // Remove all event listeners
           $('.btn-wrapper', $(this)).removeClass('show').addClass('hide');
           $('.spinner-wrapper', $(this)).removeClass('hide').addClass('show');
           
