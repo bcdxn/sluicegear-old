@@ -501,8 +501,7 @@
         key = $(this).attr('data-item-key');
         if (self.items[key] !== undefined && self.items[key] !== null &&
             self.items[key].quantity < 10) {
-          self.items[key].quantity += 1;
-          self.numItems += 1;
+          self.updateQuantityByKey(key, self.items[key].quantity + 1);
           self._render();
         }
       });
@@ -517,12 +516,11 @@
         
         key = $(this).attr('data-item-key');
         if (self.items[key] !== undefined && self.items[key] !== null) {
-          if (self.items[key].quantity > 1) {
-            self.items[key].quantity -= 1;
-            self.numItems -= 1;
-          } else if (self.items[key].quantity === 1) {
-            self.removeItemByKey(key);
-          }
+          // if (self.items[key].quantity > 1) {
+            self.updateQuantityByKey(key, self.items[key].quantity - 1);
+          // } else if (self.items[key].quantity === 1) {
+          //   self.removeItemByKey(key);
+          // }
           self._render();
         }
       });
