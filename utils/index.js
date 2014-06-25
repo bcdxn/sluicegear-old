@@ -81,11 +81,16 @@ exports.isValidShoppingCart = function (str) {
       case HAMMOCK_TYPE:
         if (!isValidHammock(cart[i].item.config)) {
           ret.isValid = false;
-          ret.msg = 'Cart -- Invalid structure -- config';
+          ret.msg = 'Cart -- Invalid structure -- Hammock -- config';
           return ret;
         }
         break;
       case EXTRA_STRAPS_TYPE:
+        if (!isValidExtraStraps(cart[i].item.config)) {
+          ret.isValid = false;
+          ret.msg = 'Cart -- Invalid structure -- Straps -- config';
+          return ret;
+        }
         break;
       case CARABINER_TYPE:
         break;
@@ -214,10 +219,27 @@ exports.isBoolean = isBoolean;
 function isValidHammock(hammockConfig) {
   if (hammockConfig.hasOwnProperty('bodyColor') &&
       isString(hammockConfig.bodyColor) &&
+      hammockConfig.bodyColor.length > 0 &&
       hammockConfig.hasOwnProperty('accentColor') &&
       (isString(hammockConfig.accentColor) ||
         hammockConfig.accentColor === null) &&
       isBoolean(hammockConfig.straps)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Determine if the given straps object is valid.
+ *
+ * @param  {Object} strapsConfig The object to be tested
+ * @return {Boolean}             True if the straps config is valid
+ */
+function isValidExtraStraps(strapsConfig) {
+  if (strapsConfig.hasOwnProperty('bagColor') &&
+      isString(strapsConfig.bagColor) &&
+      strapsConfig.bagColor.length > 0) {
     return true;
   } else {
     return false;

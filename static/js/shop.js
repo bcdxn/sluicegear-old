@@ -35,13 +35,22 @@
     console.log('checkout!');
   });
 
+  // Listen to strap bag color change clicks
+  $('#strapBagColors .color-choice').on('click', function () {
+    $(this).parent().children().removeClass('active');
+    $(this).addClass('active');
+  });
+
   // Adding Straps to Cart Btn
   $('#addStrapsToCartBtn').on('click', function (evt) {
+    var bagColor = $('#strapBagColors .color-choice.active').attr('data-color');
+
     cart.addItem({
       type: 'Straps',
       config: {
         model: 'Straps',
-        desc: 'Extra straps',
+        bagColor: bagColor,
+        desc: 'Extra straps with ' + bagColor + ' bag',
         price: 2000,
         imgSrc: 'img/straps.jpg'
       }

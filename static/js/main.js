@@ -145,9 +145,9 @@
   }
 
   function setHeroGalleryHeight() {
-    var galleryHeight = $(window).height() - 60;
-    if (galleryHeight < 550) {
-      galleryHeight = 550;
+    var galleryHeight = window.innerHeight - 60;
+    if (galleryHeight < 375) {
+      galleryHeight = 375;
     }
     $('.sluice-hero-wrapper').css('height', galleryHeight + 'px');
   }

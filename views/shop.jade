@@ -1,6 +1,8 @@
 extends _layout
 
 block body
+  //- Styles
+  link(rel='stylesheet', type='text/css', href='bin/shop.min.css')
   .container
     //- Header
     .main-menu-wrapper
@@ -45,6 +47,20 @@ block body
               .extras-wrapper
                 .extras-thumbnail.straps
                 .extras-desc Extra set of straps
+                .grid.straps-color-grid.center.ptm
+                  .row
+                    .col.l12.l-txt-center.m-txt-center.s-txt-center Bag Color:
+                  #strapBagColors.row.color-choices
+                    .col.s20p.m20p.l20p.color-choice.active(data-color="red")
+                      img(src="img/fabric-colors/red-fabric.png")
+                    .col.l20p.m20p.s20p.color-choice(data-color="blue")
+                      img(src="img/fabric-colors/blue-fabric.png")
+                    .col.l20p.m20p.s20p.color-choice(data-color="tan")
+                      img(src="img/fabric-colors/tan-fabric.png")
+                    .col.l20p.m20p.s20p.color-choice(data-color="burgundy")
+                      img(src="img/fabric-colors/burgundy-fabric.png")
+                    .col.l20p.m20p.s20p.color-choice(data-color="turquoise")
+                      img(src="img/fabric-colors/turquoise-fabric.png")
                 #addStrapsToCartBtn.extras-add-to-cart-btn.ptm
                   | Add to cart $20.00
             .col.l4.m6.s10.s-right1.extras-col
@@ -60,12 +76,22 @@ block body
   #shoppingCartContainer.shopping-cart-wrapper.hidden
 
   //- Styles
-  link(rel='stylesheet', type='text/css', href='css/shop.css')
-  link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
+  //- link(rel='stylesheet', type='text/css', href='bin/shop.min.css')
+  
 
   //- Scripts
   script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
   script(src='bin/shop.min.js')
+
+  //----------------------------------------------------------------------------
+  //- Development individual styles
+
+  //- cat css/shop.css \
+  //- css/shopping-cart.css | \
+  //- cleancss -o bin/shop.min.css
+
+  //- link(rel='stylesheet', type='text/css', href='css/shop.css')
+  //- link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
 
   //-  Development individual scripts
   

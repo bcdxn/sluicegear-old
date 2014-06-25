@@ -292,8 +292,17 @@ exports.thankyou = function (req, res) {
   });
 };
 
+exports.fourOhFour = function (req, res) {
+  res.render('notice', {
+    title: '404',
+    msg: 'page not found',
+    btnTxt: 'Go home'
+  });
+};
+
 function invalidOrder(res) {
   res.render('notice', {
+    title: 'uh oh!',
     msg: 'Something went wrong with your order. Please try again.',
     btnTxt: 'Try again'
   });

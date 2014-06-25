@@ -19,6 +19,7 @@
     this.$headerComponent = $('.mini-cart-wrapper');
     this.getItemKey = getItemKey || _getItemKey;
     this.getItemKey = _getItemKey;
+    this.expandedContainerHeight = $(window).height();
 
     // Check for previous state saved in cookie
     $.cookie.json = true;
@@ -441,12 +442,14 @@
 
     Sluice.ShoppingCart.prototype.hide = function () {
       this.$container.addClass('hidden');
-      $('.container').removeClass('expanded-shopping-cart');
+      $('.container').removeClass('expanded-shopping-cart')
+        .css('height', 'auto');
     };
 
     Sluice.ShoppingCart.prototype.expand = function () {
       this.$container.removeClass('hidden');
-      $('.container').addClass('expanded-shopping-cart');
+      $('.container').addClass('expanded-shopping-cart')
+        .css('height', this.expandedContainerHeight + 'px');
     };
 
     Sluice.ShoppingCart.prototype.setCartWidth = function () {
@@ -588,6 +591,10 @@
 
       $(window).on('resize', function () {
         self.setCartWidth();
+        self.expandedContainerHeight = $(window).height();
+        if (!self.$container.hasClass('hidden')) {
+          $('.container').css('height', self.expandedContainerHeight + 'px');
+        }
       });
     };
 

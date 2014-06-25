@@ -2,9 +2,7 @@ extends _layout
 
 block body
   //- Styles
-  link(rel='stylesheet', type='text/css', href='css/hero-gallery.css')
-  link(rel='stylesheet', type='text/css', href='css/landing.css')
-  link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
+  link(rel='stylesheet', type='text/css', href='bin/landing.min.css')
   .container
     //- Header
     .main-menu-wrapper
@@ -252,8 +250,21 @@ block body
   //- Scripts
   script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
   script(src='bin/landing.min.js')
+
+  //----------------------------------------------------------------------------
+
+  //- Development individual styles
+
+  //- cat css/hero-gallery.css \
+  //- css/landing.css \
+  //- css/shopping-cart.css | \
+  //- cleancss -o bin/landing.min.css
   
-  //- Devevelopment individual scripts
+  //- link(rel='stylesheet', type='text/css', href='css/hero-gallery.css')
+  //- link(rel='stylesheet', type='text/css', href='css/landing.css')
+  //- link(rel='stylesheet', type='text/css', href='css/shopping-cart.css')
+
+  //- Development individual scripts
 
   //- cat js/jquery.cookie.js \
   //- js/common.js \

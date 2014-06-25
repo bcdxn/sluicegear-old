@@ -44,7 +44,7 @@ app.get('/order', routes.order);
 app.get('/orderApprove', routes.orderApprove);
 app.get('/orderExecute', routes.orderExecute);
 app.get('/thankyou', routes.thankyou);
-// app.get('*', routes.fourOhFour);
+app.get('*', routes.fourOhFour);
 
 /* Start Server
 ------------------------------------------------------------------------------*/

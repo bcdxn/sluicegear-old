@@ -83,7 +83,10 @@
           transition: right 0.25s ease-in-out;
 }
 
-.container.expanded-shopping-cart { right: 480px; }
+.container.expanded-shopping-cart {
+  overflow: hidden;
+  right: 480px;
+}
 
 /* Cart Items
 ------------------------------------------------------------------------------*/

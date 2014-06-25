@@ -211,3 +211,7 @@
 .extras-add-to-cart-btn:hover {
   color: #444;
 }
+
+.grid.straps-color-grid {
+  max-width: 70%;
+}
