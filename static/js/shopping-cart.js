@@ -417,6 +417,7 @@
         for (i = 0; i < this.keys.length; i++) {
           cartItem = this.items[this.keys[i]];
           if (cartItem !== undefined && cartItem !== null) {
+            model = '';
             if (cartItem.item.type === 'Hammock') {
               model = ' Hammock';
             }
