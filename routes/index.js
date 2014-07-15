@@ -15,11 +15,25 @@ paypal.configure({
 });
 
 exports.landing = function (req, res) {
-  res.render('landing');
+  res.render('landing', {
+    'title': 'Hammocks made in the USA',
+    'canonical': 'http://www.sluicegear.com/',
+    'urlRoot': process.env.SLUICE_HOST_ROOT
+  });
 };
 
 exports.shop = function (req, res) {
-  res.render('shop');
+  var query;
+
+  if (req.path.substr(-1) == '/' && req.path.length > 1) {
+    res.redirect(301, req.path.slice(0, -1) + query);
+  }
+
+  res.render('shop', {
+    'title': 'Shop Hammocks',
+    'canonical': 'http://www.sluicegear.com/shop',
+    'urlRoot': process.env.SLUICE_HOST_ROOT
+  });
 };
 
 exports.order = function (req, res) {

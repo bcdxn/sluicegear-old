@@ -1,28 +1,31 @@
 doctype html
 html(lang='en')
   head
-    meta(charaset='utf8')
+    meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-    title Sluice Gear | Hammocks made in the USA
-    meta(name='description', content='The best hammocks made in the USA. Personalize your own hammock and create your fun. Easy to set up and great for relaxing anywhere. Built in North Carolina, USA.')
+    title='Sluice Gear | ' + title
+    meta(name='description', content='Sluice hammocks are personalized just for you and made in the USA. Take Sluice hammocks with you camping or to the park. Sluice hammocks are perfect for relaxing anywhere.')
     link(rel='publisher', href='https://plus.google.com/100407766807870966764')
+    - if (canonical) {
+    link(rel='canonical', href=canonical)
+    - }
     
     //- Facebook Open Graph Meta Data
     meta(property='og:title', content='Sluice Gear | Hammocks made in the USA')
     meta(property='og:type', content='website')
-    meta(property='og:url', content='http://www.sluicegear.com')
-    meta(name='og:description', content='The best hammocks made in the USA. Personalize your own hammock and create your fun. Easy to set up and great for relaxing anywhere. Built in North Carolina, USA.')
+    meta(property='og:url', content='http://www.sluicegear.com/')
+    meta(name='og:description', content='Sluice hammocks are personalized just for you and made in the USA. Take Sluice hammocks with you camping or to the park. Sluice hammocks are perfect for relaxing anywhere.')
     meta(property='og:image', content='http://www.sluicegear.com/img/sluicegear-sc.png')
     
     //- Twitter Meta Data
     meta(name='twitter:card', content='summary')
-    meta(name='twitter:url', content='http://www.sluicegear.com')
+    meta(name='twitter:url', content='http://www.sluicegear.com/')
     meta(name='twitter:title', content='Sluice Gear | Hammocks made in the USA')
-    meta(name='twitter:description' content='The best hammocks made in the USA. Personalize your own hammock and create your fun. Easy to set up and great for relaxing anywhere. Built in North Carolina, USA.')
+    meta(name='twitter:description' content='Sluice hammocks are personalized just for you and made in the USA. Take Sluice hammocks with you camping or to the park. Sluice hammocks are perfect for relaxing anywhere.')
     meta(name='twitter:image' content='http://www.sluicegear.com/img/sluicegear-sc.png')
 
     //- Keywords
-    meta(name='keywords', content='Hammock made in the USA, Handmade Hammock, Hammock made in North carolina, Nylon Hammock, Colorful hammock, Personalizable Hammock, Create your fun')
+    meta(name='keywords', content='Hammock made in the USA, Handmade Hammock, Hammock made in North carolina, Nylon Hammock, Colorful hammock, Personalizable Hammock, Create your fun, Hammie Hammock')
 
     link(rel='stylesheet', type='text/css', href='bin/layout.min.css')
     script (function(e,t,n,r,i,s,o){e["GoogleAnalyticsObject"]=i;e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},e[i].l=1*new Date;s=t.createElement(n),o=t.getElementsByTagName(n)[0];s.async=1;s.src=r;o.parentNode.insertBefore(s,o)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-52244108-1","sluicegear.com");ga("send","pageview")

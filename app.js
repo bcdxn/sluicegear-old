@@ -32,8 +32,13 @@ app.set('port', process.env.PORT || CONFIG.PORT)
   .use(express.cookieParser())
   .use(express.session({'secret': process.env.SLUICE_SESSION_PWD}));
 
-/* Handle API requests
+/* Log and exit on all uncaught exceptions
 ------------------------------------------------------------------------------*/
+process.on('uncaughtException', function(err) {
+  console.error('uncaughtException:', err.message);
+  console.error(err.stack);
+  process.exit(1);
+});
 
 
 /* Handle page requests

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /order
+Disallow: /orderApprove
+Disallow: /orderExecute
+Disallow: /thankyou
+Sitemap: http://www.sluicegear.com/sitemap.xml
