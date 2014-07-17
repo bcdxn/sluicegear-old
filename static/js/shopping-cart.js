@@ -353,7 +353,7 @@
     '<div class="row cart-row pam">',
       '<div class="col l6 m6 s6">',
         '<div class="cart-preview-wrapper prm">',
-          '<img src="{{PREVIEW_SRC}}" />',
+          '<img src="{{PREVIEW_SRC}}", alt="preview" />',
         '</div>',
       '</div>',
       '<div class="col l5 m5 s5">',

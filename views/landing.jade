@@ -39,16 +39,16 @@ block body
       .spec-summary.grid.center
         .row
           .col.l3.m3.s6.spec-icon-wrapper
-            img.spec-icon(src='img/spec-icons/icon-dimensions.png')
+            img.spec-icon(src='img/spec-icons/icon-dimensions.png', alt='dimensions')
             .spec-icon-caption 9ft x 5ft
           .col.l3.m3.s6.spec-icon-wrapper
-            img.spec-icon(src='img/spec-icons/icon-durable.png')
+            img.spec-icon(src='img/spec-icons/icon-durable.png', alt='durable')
             .spec-icon-caption Holds up to 400lbs
           .col.l3.m3.s6.spec-icon-wrapper
-            img.spec-icon(src='img/spec-icons/icon-weight.png')
+            img.spec-icon(src='img/spec-icons/icon-weight.png', alt='weight')
             .spec-icon-caption Weighs just 21oz
           .col.l3.m3.s6.spec-icon-wrapper
-            img.spec-icon(src='img/spec-icons/icon-warranty.png')
+            img.spec-icon(src='img/spec-icons/icon-warranty.png', alt='warranty')
             .spec-icon-caption 2 year warranty
         .row
           .col.l12
@@ -60,7 +60,7 @@ block body
             table.sluice-table
               thead
                 tr
-                  th
+                  th 
                   th(colspan='2') Standard Hammock
                   th(colspan='2') Kid's Hammie
               tbody
@@ -147,12 +147,12 @@ block body
                   th(colspan='4') 6 attachment points per strap
                 tr
                   th.table-lbl Materials and construction
-                    th(colspan='4')
-                      ul
-                        li 3/4in wide no-stretch tubular polyester webbing
-                        li Continuous spine construction with heavy duty triple stitched attachment points
-                        li Abrasion resistant and tree bark friendly
-                        li Mating snap fasteners on straps and stuff sack
+                  th(colspan='4')
+                    ul
+                      li 3/4in wide no-stretch tubular polyester webbing
+                      li Continuous spine construction with heavy duty triple stitched attachment points
+                      li Abrasion resistant and tree bark friendly
+                      li Mating snap fasteners on straps and stuff sack
                   tr
                     th.table-lbl Accessories
                     th(colspan='4')
@@ -169,7 +169,7 @@ block body
           #introSectionParallaxBg.parallax-bg-panel.start-right.tree-beach-pnl
         .parallax-section-copy-wrapper.grid.center
           .row.parallax-section-copy.section-copy.right
-            h1 Built for Relaxing
+            h4 Built for Relaxing
             p
               | Sluice hammocks can be set up in no time and are easily adjusted
               | so you can experience comfort your way. The lightweight laundered
@@ -180,10 +180,10 @@ block body
       .grid.center
         .row
           .col.l5.m5.l-right7.m-right7
-            img.section-img(src='img/straps-shadow.png')
+            img.section-img(src='img/straps-shadow.png', alt='hammock straps')
           .col.l6.m6.s-txt-center.l-left5.m-left5
             .section-copy.made-in-america-section-copy.center-vertical.light
-              h1 Home Grown
+              h4 Home Grown
               p
                 | Sluice hammocks are handmade in Raleigh, North Carolina with
                 | domestically-sourced materials and components. Our hammocks
@@ -195,7 +195,7 @@ block body
           #portableSectionParallaxBg.parallax-bg-panel.start-right.fabric-pnl
         .parallax-section-copy-wrapper.grid.center
           .row.parallax-section-copy.section-copy.right.l-light
-            h1 Portable and Durable
+            h4 Portable and Durable
             p
               | Sluice hammocks are designed for easy setup. Their light
               | weight means you can take Sluice hammocks with you to the park
@@ -208,18 +208,17 @@ block body
         .row
           .col.l8.m8.s10.l-right2.m-right2.s-right1
             - var imgSrc = 'infographic-' + Math.floor(Math.random() * (21)) + '.png'
-            img.infographic-main-img.info-img(src='img/infographic/' + imgSrc)
-            //- img.infographic-main-img.info-img(src='img/infographic/infographic.png')
+            img.infographic-main-img.info-img(src='img/infographic/' + imgSrc, alt='Sluice hammock')
         #infographicTop.row.infographic-small.top
           .col.l2.m2.s2
-            img#infographicThread.infographic-small.info-img(src='img/infographic/infographic-thread.png')
+            img#infographicThread.infographic-small.info-img(src='img/infographic/infographic-thread.png', alt='thread icon')
           .col.l2.m2.s2.l-right8.m-right8.s-right8.small-inline
-            img#infographicClip.infographic-small.info-img(src='img/infographic/infographic-clip.png')
+            img#infographicClip.infographic-small.info-img(src='img/infographic/infographic-clip.png', alt='clip icon')
         #infographicBottom.row.infographic-small.bottom
           .col.l2.m2.s2
-            img#infographicStash.infographic-small.info-img(src='img/infographic/infographic-stash.png')
+            img#infographicStash.infographic-small.info-img(src='img/infographic/infographic-stash.png', alt='stash icon')
           .col.l2.m2.s2.l-right8.m-right8.s-right8
-            img#infographicSnap.infographic-small.info-img(src='img/infographic/infographic-snap.png')
+            img#infographicSnap.infographic-small.info-img(src='img/infographic/infographic-snap.png', alt='snap icon')
     //- Call to Action
     section.call-to-action-section
       .grid.center
@@ -236,9 +235,9 @@ block body
           | latest Sluice news
         .social-icon-wrapper
           a.social-icon(href='http://instagram.com/sluicegear')
-            img(src='img/social-icons/instagram.png')
+            img(src='img/social-icons/instagram.png', alt='follow Sluice Hammocks on Instagram')
           a.social-icon(href='https://www.facebook.com/SluiceHammocks')
-            img(src='img/social-icons/facebook.png')
+            img(src='img/social-icons/facebook.png', alt='follow Sluice Hammocks on Facebook')
           .social-hashtag
             h3 #sluicing @sluicegear
     //- Footer

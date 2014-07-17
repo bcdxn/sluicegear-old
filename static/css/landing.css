@@ -127,7 +127,7 @@
 .spec-icon {
   display: block;
   padding: 41px 20px 10px 20px;
-  width: 100%;
+  width: 99%;
   margin: auto;
   max-width: 140px;
 }
@@ -272,7 +272,7 @@
 .parallax-section-copy { max-width: 400px; padding: 75px 40px 0 0; }
 .parallax-section-copy.right { float: right; }
 
-.section-copy h1 {
+.section-copy h4 {
   color: #557aff;
   font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
   font-size: 48px;
