@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-.banner-copy h3 {
+.banner-copy h2.small {
   font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
   font-size: 24px;
   padding: 10px 10px 0 10px;
@@ -294,7 +294,7 @@
 @media screen and (max-width: 940px) {
   .parallax-section { min-height: 375px; }
   .parallax-section-copy { padding: 50px 10px; }
-  .section-copy h1 { font-size: 40px; }
+  .section-copy h4 { font-size: 40px; }
 }
 
 @media screen and (max-width: 780px) {
