@@ -125,12 +125,21 @@
 .spec-icon-wrapper:last-child { border-radius: 0 4px 4px 0; }
 
 .spec-icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
   display: block;
   padding: 41px 20px 10px 20px;
-  width: 99%;
+  width: 100%;
   margin: auto;
   max-width: 140px;
 }
+
+.spec-icon.dimension { background-image: url('../img/spec-icons/icon-dimensions.png'); }
+.spec-icon.durable { background-image: url('../img/spec-icons/icon-dimensions.png'); }
+.spec-icon.weight { background-image: url('../img/spec-icons/icon-dimensions.png'); }
+.spec-icon.warranty { background-image: url('../img/spec-icons/icon-dimensions.png'); }
+
 
 .spec-icon-caption {
   font-family: 'Open Sans Condensed', Helvetica, Arial, sans-serif;
