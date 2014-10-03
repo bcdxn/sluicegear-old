@@ -31,6 +31,11 @@ block body
       .row.order-shipping.order-table.pam
         .col.l2.m2.l-right7.m-right7.shipping-lbl.order-table-lbl Shipping: 
         .col.l3.m3.l-right7.m-right7.shipping-val.order-table-val= '$' + shipping
+      - if (couponMsg !== null && couponMsg !== undefined && couponMsg !== '') {
+      .row.order-coupon.order-table.pam
+        .col.l2.m2.l-right7.m-right7.shipping-lbl.order-table-lbl Coupon: 
+        .col.l3.m3.l-right7.m-right7.shipping-val.order-table-val= couponMsg
+      - }
       .row.order-total.order-table.pam
         .col.l2.m2.l-right7.m-right7.total-lbl.order-table-lbl Total:
         .col.l3.m3.l-right7.m-right7.total-val.order-table-val.total= '$' + total

@@ -5,7 +5,8 @@ var Config = require('../config'),
     uuid   = require('node-uuid'),
     utils  = require('../utils'),
     email  = require('../email'),
-    CONFIG = new Config();
+    CONFIG = new Config(),
+    couponCodes = {};
 
 paypal.configure({
   'host': process.env.SLUICE_PP_HOST,
@@ -13,6 +14,12 @@ paypal.configure({
   'client_id': process.env.SLUICE_PP_CLIENT_ID,
   'client_secret': process.env.SLUICE_PP_CLIENT_SECRET
 });
+
+couponCodes.myFestivalFriends = {
+  code: process.env.SLUICE_COUPON_CODE_MY_FEST_FRIENDS,
+  discount: 0.3,
+  msg: '30% discount plus custom embroidery'
+}
 
 exports.landing = function (req, res) {
   res.render('landing', {
@@ -38,7 +45,7 @@ exports.shop = function (req, res) {
 
 exports.order = function (req, res) {
   var orderId = uuid.v4(),
-      validation = utils.isValidShoppingCart(req.query.cart),
+      validation,
       cart,
       paypalPayment,
       shipping,
@@ -46,6 +53,20 @@ exports.order = function (req, res) {
       subtotal,
       total,
       port = '';
+
+  var str = req.query.cart;
+
+  console.log('.')
+  console.log('.')
+  console.log('.')
+  console.log('.')
+  console.log(str);
+  console.log('.')
+  console.log('.')
+  console.log('.')
+  console.log('.')
+
+  validation = utils.isValidShoppingCart(req.query.cart);
 
   if (process.env.NODE_ENV !== 'production') {
     port = ':' + (process.env.PORT ? process.env.PORT : CONFIG.PORT);
@@ -76,6 +97,16 @@ exports.order = function (req, res) {
 
     subtotal = utils.calculateSubtotal(cart);
     shipping = utils.calculateShipping(subtotal);
+
+    if (cart.couponCode) {
+      // Calculate discount
+      if (cart.couponCode === couponCodes.myFestivalFriends.code) {
+        subtotal = subtotal - (subtotal * couponCodes.myFestivalFriends.discount);
+      }
+    }
+
+    console.log('total before heading to paypal: ' + subtotal);
+
     total = subtotal + shipping;
 
     // Add pricing to request body
@@ -175,9 +206,18 @@ exports.orderApprove = function (req, res) {
   shipping = utils.calculateShipping(subtotal);
   total = subtotal + shipping;
 
+  // Calculate discount
+  if (cart.couponCode) {
+    // Calculate discount
+    if (cart.couponCode === couponCodes.myFestivalFriends.code) {
+      total = subtotal - (subtotal * couponCodes.myFestivalFriends.discount) + shipping;
+    }
+  }
+
   // Render the confirmation page
   res.render('order-summary', {
     'cart': cart,
+    'couponMsg': cart.couponMsg,
     'subtotal': utils.priceToString(subtotal),
     'shipping': utils.priceToString(shipping),
     'total': utils.priceToString(total),
@@ -294,8 +334,17 @@ exports.thankyou = function (req, res) {
   shipping = utils.calculateShipping(subtotal);
   total = subtotal + shipping;
 
+  // Calculate discount
+  if (cart.couponCode) {
+    // Calculate discount
+    if (cart.couponCode === couponCodes.myFestivalFriends.code) {
+      total = subtotal - (subtotal * couponCodes.myFestivalFriends.discount) + shipping;
+    }
+  }
+
   res.render('order-summary', {
     'cart': cart,
+    'couponMsg': cart.couponMsg,
     'subtotal': utils.priceToString(subtotal),
     'shipping': utils.priceToString(shipping),
     'total': utils.priceToString(total),
@@ -312,6 +361,16 @@ exports.fourOhFour = function (req, res) {
     msg: 'page not found',
     btnTxt: 'Go home'
   });
+};
+
+exports.coupon = function (req, res) {
+  var couponCode = req.body.couponCode;
+
+  if (couponCode === couponCodes.myFestivalFriends.code) {
+    res.json(couponCodes.myFestivalFriends);
+  } else {
+    res.json({ 'error': 'Coupon code not found.' });
+  }
 };
 
 function invalidOrder(res) {

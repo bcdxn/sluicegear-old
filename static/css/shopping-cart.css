@@ -56,6 +56,35 @@
   float: right;
 }
 
+.coupon-code-lbl {
+  color: #888;
+  float: left;
+  line-height: 26px;
+}
+.coupon-code-wrapper { float: right; }
+.coupon-code-input {
+  float: left;
+  padding: 4px;
+}
+.coupon-code-input.invalid {
+  border-color: #ff0000;
+}
+
+.btn.coupon-code-btn {
+  border: none;
+  float: left;
+  font-size: 14px;
+  height: 26px;
+  line-height: 22px;
+  margin: 1px 0 0 5px;
+  padding: 0;
+  width: 50px;
+}
+
+.coupon-row.hide { display: none; }
+.coupon-lbl { color: #888; }
+.coupon-msg { color: #888; float: right; }
+
 .subtotal {
   color: #888;
   font-size: 16px;

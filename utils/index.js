@@ -39,14 +39,18 @@ exports.isValidShoppingCart = function (str) {
   }
 
   // Check URI encoding
-  try {
-    decodedStr = decodeURIComponent(str);
-  } catch (err) {
-    ret.isValid = false;
-    ret.msg = 'Cart -- invalid URI encoding.'
-    ret.err = err;
-    return ret;
-  }
+  // try {
+  //   decodedStr = decodeURIComponent(str);
+  // } catch (err) {
+  //   console.log(err);
+  //   console.log(str)
+  //   ret.isValid = false;
+  //   ret.msg = 'Cart -- invalid URI encoding.'
+  //   ret.err = err;
+  //   return ret;
+  // }
+
+  decodedStr = str;
 
   // Check json
   try {
@@ -59,36 +63,65 @@ exports.isValidShoppingCart = function (str) {
   }
 
   // Check cart structure
-  if (!Array.isArray(cart)) {
+  if (typeof cart !== 'object') {
     ret.isValid = false;
-    ret.msg = 'Cart -- Invalid structure -- not array';
+    ret.msg = 'Cart -- Invalid structure -- not an object';
     return ret;
   }
 
-  for (i = 0; i < cart.length; i++) {
+  if (cart.items === undefined || cart.items === null) {
+    ret.isValid = false;
+    ret.msg = 'Cart -- Invalid structure -- no items';
+    return ret;
+  }
+
+  // Check items structure
+  if (!Array.isArray(cart.items)) {
+    ret.isValid = false;
+    ret.msg = 'Items -- Invalid structure -- not an array';
+    return ret;
+  }
+
+  // Check coupon code
+  if (cart.couponCode !== undefined && cart.couponCode !== null &&
+      typeof cart.couponCode !== 'string') {
+    ret.isValid = false;
+    ret.msg = 'CouponCode -- Invalid structure -- not a string';
+    return ret;
+  }
+
+  // Check coupon message
+  if (cart.couponMsg !== undefined && cart.couponMsg !== null &&
+      typeof cart.couponMsg !== 'string') {
+    ret.isValid = false;
+    ret.msg = 'CouponMsg -- Invalid structure -- not a string';
+    return ret;
+  }
+
+  for (i = 0; i < cart.items.length; i++) {
     // Check cart properties
-    if (!isDefined(cart[i].item) ||
-        !isString(cart[i].item.type) ||
-        !isDefined(cart[i].item.config) ||
-        !isInt(cart[i].quantity) ||
-        cart[i].quantity <= 0) {
+    if (!isDefined(cart.items[i].item) ||
+        !isString(cart.items[i].item.type) ||
+        !isDefined(cart.items[i].item.config) ||
+        !isInt(cart.items[i].quantity) ||
+        cart.items[i].quantity <= 0) {
       ret.isValid = false;
-      ret.msg = 'Cart -- Invalid structure -- internal property';
+      ret.msg = 'Items -- Invalid structure -- internal property';
       return ret;
     }
     // Check hammock config
-    switch(cart[i].item.type) {
+    switch(cart.items[i].item.type) {
       case HAMMOCK_TYPE:
-        if (!isValidHammock(cart[i].item.config)) {
+        if (!isValidHammock(cart.items[i].item.config)) {
           ret.isValid = false;
-          ret.msg = 'Cart -- Invalid structure -- Hammock -- config';
+          ret.msg = 'Items -- Invalid structure -- Hammock -- config';
           return ret;
         }
         break;
       case EXTRA_STRAPS_TYPE:
-        if (!isValidExtraStraps(cart[i].item.config)) {
+        if (!isValidExtraStraps(cart.items[i].item.config)) {
           ret.isValid = false;
-          ret.msg = 'Cart -- Invalid structure -- Straps -- config';
+          ret.msg = 'Items -- Invalid structure -- Straps -- config';
           return ret;
         }
         break;
@@ -96,8 +129,8 @@ exports.isValidShoppingCart = function (str) {
         break;
       default:
         ret.isValid = false;
-        console.log(cart[i].item.type)
-        ret.msg = 'Cart -- Invalid structure -- config -- invalid type';
+        console.log(cart.items[i].item.type)
+        ret.msg = 'Items -- Invalid structure -- config -- invalid type';
         return ret;
     }
   }
@@ -118,32 +151,34 @@ exports.calculateSubtotal = function (cart) {
       itemPrice,
       i;
 
-  for (i = 0; i < cart.length; i++) {
-    switch (cart[i].item.type) {
+  for (i = 0; i < cart.items.length; i++) {
+    switch (cart.items[i].item.type) {
       case HAMMOCK_TYPE:
-        console.log('MODEL: ' + cart[i].item.config.model);
-        if (cart[i].item.config.model === STANDARD_MODEL) {
+        console.log('MODEL: ' + cart.items[i].item.config.model);
+        if (cart.items[i].item.config.model === STANDARD_MODEL) {
           itemPrice = STANDARD_PRICE;
-        } else if (cart[i].item.config.model === HAMMIE_MODEL) {
+        } else if (cart.items[i].item.config.model === HAMMIE_MODEL) {
           itemPrice = HAMMIE_PRICE;
         }
-        if (cart[i].item.config.accentColor !== null) {
+        if (cart.items[i].item.config.accentColor !== null) {
           itemPrice += ACCENT_PRICE;
         }
-        if (cart[i].item.config.straps === true) {
+        if (cart.items[i].item.config.straps === true) {
           itemPrice += STRAPS_PRICE;
         }
-        subtotal += (itemPrice * cart[i].quantity);
+        subtotal += (itemPrice * cart.items[i].quantity);
         break;
       case EXTRA_STRAPS_TYPE:
-        subtotal += (STRAPS_PRICE * cart[i].quantity);
+        subtotal += (STRAPS_PRICE * cart.items[i].quantity);
         break;
       case CARABINER_TYPE:
-        subtotal += (CARABINER_PRICE * cart[i].quantity);
+        subtotal += (CARABINER_PRICE * cart.items[i].quantity);
       default:
         break;
     }
   }
+
+  console.log('AMOUNT: ' + subtotal)
 
   return subtotal;
 };
