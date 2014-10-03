@@ -29,10 +29,13 @@
       if (prevState !== undefined &&
           prevState !== null &&
           prevState !== '') {
-        this.items      = prevState.items;
-        this.keys       = prevState.keys;
-        this.numItems   = prevState.numItems;
-        this.nextUid    = prevState.nextUid;
+        this.items      = prevState.items || {};
+        this.keys       = prevState.keys || [];
+        this.numItems   = prevState.numItems || 0;
+        this.nextUid    = prevState.nextUid || 0;
+        this.discount   = prevState.discount || 0;
+        this.couponCode = prevState.couponCode || '';
+        this.couponMsg  = prevState.couponMsg || '';
       } else {
         this.empty();
       }
@@ -57,6 +60,9 @@
     this.numItems   = 0;
     this.nextUid    = 0;
     this.totalPrice = 0;
+    this.discount   = 0;
+    this.couponCode = '';
+    this.couponMsg  = '';
   };
 
   Sluice.ShoppingCart.prototype.getShippingPrice = function () {
@@ -91,7 +97,11 @@
    * @param {Number} The total price formatted as an integer
    */
   Sluice.ShoppingCart.prototype.getTotalPrice = function () {
-    return this.getShippingPrice() + this.getSubtotalPrice();
+    var total = this.getShippingPrice() + this.getSubtotalPrice();
+
+    total = total - (total * this.discount);
+
+    return total;
   };
 
   /**
@@ -253,10 +263,13 @@
   Sluice.ShoppingCart.prototype._saveStateInCookie = function () {
     var cState = {};
 
-    cState.items    = this.items;
-    cState.keys     = this.keys;
-    cState.numItems = this.numItems;
-    cState.nextUid  = this.nextUid;
+    cState.items      = this.items;
+    cState.keys       = this.keys;
+    cState.numItems   = this.numItems;
+    cState.nextUid    = this.nextUid;
+    cState.discount   = this.discount;
+    cState.couponCode = this.couponCode;
+    cState.couponMsg  = this.couponMsg
 
     $.cookie.json = true;
     $.removeCookie('sluice_cart_cookie');
@@ -322,6 +335,20 @@
       '</div>',
       '<div class="row cart-row  pls prs mtl mbl">',
         '<div class="hb col l12"></div>',
+      '</div>',
+      '<div class="row cart-row">',
+        '<span class="coupon-code-lbl">Coupon Code</span>',
+        '<span class="coupon-code-wrapper">',
+          '<input type="text" class="coupon-code-input">',
+          '<input class="coupon-code-btn btn green-solid shadow" type="button" value="apply">',
+        '</span>',
+      '</div>',
+      '<div class="row cart-row  pls prs mtl mbl">',
+        '<div class="hb col l12"></div>',
+      '</div>',
+      '<div class="row cart-row mtm coupon-row">',
+        '<span class="shopping-lbl coupon-lbl">Coupon</span>',
+        '<span class="coupon-msg"></span>',
       '</div>',
       '<div class="row cart-row mtm">',
         '<div class="col subtotal l12">',
@@ -399,6 +426,8 @@
           model = '',
           i;
 
+      this.totalPrice = this.getTotalPrice();
+
       if (this.numItems < 1) {
         this.$container.addClass('empty');
         innerHtml = innerHtml.replace('{{EMPTY_CLASS}}', 'empty');
@@ -437,6 +466,16 @@
       markup = markup.replace('{{CART_INNER}}', innerHtml);
 
       this.$container.html(markup);
+
+      if (this.discount > 0 && this.couponMsg !== undefined &&
+          this.couponMsg !== null && this.couponMsg.length > 0) {
+        $('.coupon-row').removeClass('hide');
+        console.log('message: ' + this.couponMsg)
+        $('.coupon-msg').html(this.couponMsg);
+      } else {
+        $('.coupon-row').addClass('hide');
+      }
+
       this.setCartWidth();
       this.$headerComponent.html(headerMarkup.replace('{{TOTAL_ITEM_COUNT}}', this.numItems));
     };
@@ -474,6 +513,7 @@
       this._onCartHeaderClick();
       this._onCheckoutBtnClick();
       this._onWindowResize();
+      this._onCouponCodeBtnClick();
     };
 
     Sluice.ShoppingCart.prototype._onKeepShoppingClick = function () {
@@ -566,7 +606,8 @@
     Sluice.ShoppingCart.prototype._onCheckoutBtnClick = function () {
       var self = this,
           encodedJson,
-          itemsArray = [];
+          itemsArray = [],
+          cart;
 
       this.$container.on('click', '.shopping-cart-inner .grid .row #checkoutBtn', function (evt) {
         evt.stopPropagation();
@@ -579,7 +620,19 @@
             itemsArray.push(self.items[key]);
           }
 
-          encodedJson = encodeURIComponent(JSON.stringify(itemsArray));
+          cart.items = itemsArray;
+
+          if (self.couponCode !== undefined && self.couponCode !== null &&
+              self.couponCode !== '') {
+            cart.couponCode = self.couponCode;
+          }
+
+          if (self.couponMsg !== undefined && self.couponMsg !== null &&
+              self.couponMsg !== '') {
+            cart.couponMsg = self.couponMsg;
+          }
+
+          encodedJson = encodeURIComponent(JSON.stringify(cart));
           window.location.href = '/order?paymentMethod=paypal&cart=' + encodedJson;
         }
       });
@@ -593,6 +646,30 @@
         self.expandedContainerHeight = $(window).height();
         if (!self.$container.hasClass('hidden')) {
           $('.container').css('height', self.expandedContainerHeight + 'px');
+        }
+      });
+    };
+
+    Sluice.ShoppingCart.prototype._onCouponCodeBtnClick = function () {
+      var self = this;
+
+      $('.coupon-code-btn').on('click', function () {
+        var code = $('.coupon-code-input').val().trim();
+
+        if (code.length > 0) {
+          $.post('/coupon', { couponCode: code }, function (data) {
+            if (data.error) {
+              $('.coupon-code-input').addClass('invalid');
+            } else {
+              console.log(data)
+              $('.coupon-code-input').removeClass('invalid');
+              self.discount = data.discount;
+              self.couponCode = data.code;
+              self.couponMsg = data.msg;
+              self._saveStateInCookie();
+              self._render();
+            }
+          }, 'json');
         }
       });
     };

@@ -49,6 +49,7 @@ app.get('/order', routes.order);
 app.get('/orderApprove', routes.orderApprove);
 app.get('/orderExecute', routes.orderExecute);
 app.get('/thankyou', routes.thankyou);
+app.post('/coupon', routes.coupon);
 app.get('*', routes.fourOhFour);
 
 /* Start Server
